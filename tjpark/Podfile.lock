@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.5.1)
+  - BaiduMapKit (3.4.2)
+  - iOS-AlipaySDK (3.0.2):
+    - iOS-AlipaySDK/Core (= 3.0.2)
+  - iOS-AlipaySDK/Core (3.0.2)
+  - JCore (1.1.6)
+  - JPush (3.0.7):
+    - JCore (~> 1.1.6)
+  - NIMSDK (4.3.0)
+  - RadioButtons (2.2.0)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.0.0)
+  - WechatOpenSDK (1.8.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - BaiduMapKit
+  - iOS-AlipaySDK
+  - JPush
+  - NIMSDK
+  - RadioButtons (~> 2.2.0)
+  - SnapKit (~> 4.0.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - WechatOpenSDK
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: fb67763f27990ba76a42bf412f848af5aef5e5ea
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  BaiduMapKit: f61b19ecf07a3f2deede72b221b366bf698739ed
+  iOS-AlipaySDK: 97d1c1fe06083e5bf2d9b56981cf469eeb508b78
+  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
+  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
+  NIMSDK: 4c7d69e30a1d7a45df07af3d28b87810510f6987
+  RadioButtons: 36efab1dd6815bfcee34c557c97b6cd7da770a82
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: 8cd73b154950360d79292a8dc8c0d0a85d258930
+  WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
+
+PODFILE CHECKSUM: 50a4e554096624a123b238fc00a456991f36c40b
+
+COCOAPODS: 1.3.1

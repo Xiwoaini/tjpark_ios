@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'tjpark' do
+pod ‘BaiduMapKit’
+pod 'JPush'
+pod 'NIMSDK'
+pod 'iOS-AlipaySDK'
+pod 'RadioButtons', '~> 2.2.0'
+pod 'WechatOpenSDK'
+pod 'Alamofire'
+ pod 'SnapKit', '~> 4.0.0'
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+end
+xcodeproj 'tjpark.xcodeproj'
+
