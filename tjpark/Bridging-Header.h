@@ -23,6 +23,8 @@
 #import "APRSASigner.h"
 //微信
 #import "WXApi.h"
+//MD5
+#import <CommonCrypto/CommonDigest.h>   
 
 //刷新控件
 //#import "MJRefresh.h"

@@ -100,22 +100,23 @@ class CarEditController: UIViewController,UITextFieldDelegate {
         let  tempText = pliate.text?.trimmingCharacters(in: characterSet)
         let textLength = tempText?.characters.count
         
-        if  textLength != 7 {
+        if  (textLength == 7 || textLength == 8) {
             
+            var label = self.view.viewWithTag(12) as! UILabel
+            label.text = ""
+            var button = self.view.viewWithTag(11) as! UIButton
+            button.backgroundColor =  UIColor(red: 25/255, green: 158/255, blue: 216/255, alpha: 100)
+            button.isEnabled = true
+            
+        }
+        else {
             var button = self.view.viewWithTag(11) as! UIButton
             button.backgroundColor =  UIColor(red: 230/255, green: 236/255, blue: 232/255, alpha: 100)
             button.isEnabled = false
             var label = self.view.viewWithTag(12) as! UILabel
             label.textColor = UIColor.red
-            label.text = "(请输入合法的7位车牌号)"
-            
-        }
-        else {
-            var label = self.view.viewWithTag(12) as! UILabel
-            label.text = ""
-            var button = self.view.viewWithTag(11) as! UIButton
-            button.backgroundColor =  UIColor(red: 61/255, green: 201/255, blue: 206/255, alpha: 100)
-            button.isEnabled = true
+            label.text = "(请输入有效的7-8位车牌号)"
+           
             
         }
            return true

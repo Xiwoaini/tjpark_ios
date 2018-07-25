@@ -27,11 +27,12 @@
 		A60E67881FE0CAC700137F5E /* huiqipao.png in Resources */ = {isa = PBXBuildFile; fileRef = A60E67851FE0CAC600137F5E /* huiqipao.png */; };
 		A60E67891FE0CAC700137F5E /* lvqipao.png in Resources */ = {isa = PBXBuildFile; fileRef = A60E67861FE0CAC600137F5E /* lvqipao.png */; };
 		A60E678A1FE0CAC700137F5E /* huangqipao.png in Resources */ = {isa = PBXBuildFile; fileRef = A60E67871FE0CAC600137F5E /* huangqipao.png */; };
-		A60FE7C11FCEA74100EF4A1A /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FE7BF1FCEA74000EF4A1A /* SwiftyTextField.swift */; };
 		A60FE7C21FCEA74100EF4A1A /* SwiftyVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FE7C01FCEA74000EF4A1A /* SwiftyVerificationCodeView.swift */; };
 		A612F6E01FE7BF08006BC5AF /* JPUSHService.h in Frameworks */ = {isa = PBXBuildFile; fileRef = A612F6DF1FE7BF08006BC5AF /* JPUSHService.h */; };
 		A613FB9E209BE86400C44F98 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A613FB9D209BE86400C44F98 /* MapController.swift */; };
 		A614A0261FCA8C440088EABB /* ParkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A614A0251FCA8C440088EABB /* ParkListController.swift */; };
+		A61505D620C931FA006F9F43 /* mylocation.png in Resources */ = {isa = PBXBuildFile; fileRef = A61505D520C931F9006F9F43 /* mylocation.png */; };
+		A61505DC20CE6E41006F9F43 /* AliPayOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61505DB20CE6E41006F9F43 /* AliPayOrder.swift */; };
 		A6175FAD1FC2C7E500616220 /* CarLifeUrlDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6175FAC1FC2C7E500616220 /* CarLifeUrlDisplay.swift */; };
 		A61DEF1C1FD7845A00666C9C /* PayOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61DEF1B1FD7845A00666C9C /* PayOrder.swift */; };
 		A61FFF651FBE8DF800126C98 /* BaiduMapAPI_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61FFF5E1FBE8DF800126C98 /* BaiduMapAPI_Map.framework */; };
@@ -52,6 +53,24 @@
 		A62B215920A2E230006DA94D /* WXApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B215820A2E230006DA94D /* WXApiManager.swift */; };
 		A630132C1FCE576D00CA896F /* YuYueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A630132B1FCE576D00CA896F /* YuYueController.swift */; };
 		A634CF9E1FCFFB39000A5D4E /* MyMoneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A634CF9D1FCFFB39000A5D4E /* MyMoneyController.swift */; };
+		A63652052106C1E6001775FB /* logoiPhoneApp_60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F42106C1DF001775FB /* logoiPhoneApp_60pt@2x.png */; };
+		A63652062106C1E6001775FB /* logoiPhoneSpootlight7_40pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F52106C1DF001775FB /* logoiPhoneSpootlight7_40pt@2x.png */; };
+		A63652072106C1E6001775FB /* logoiPadSpootlight5_29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F62106C1E0001775FB /* logoiPadSpootlight5_29pt.png */; };
+		A63652082106C1E6001775FB /* logoiPhoneSpootlight5_29pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F72106C1E0001775FB /* logoiPhoneSpootlight5_29pt@3x.png */; };
+		A63652092106C1E6001775FB /* logoiPhoneApp_60pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F82106C1E1001775FB /* logoiPhoneApp_60pt@3x.png */; };
+		A636520A2106C1E6001775FB /* logoiPadSpootlight7_40pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651F92106C1E1001775FB /* logoiPadSpootlight7_40pt@2x.png */; };
+		A636520B2106C1E6001775FB /* logoiPadApp_76pt.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FA2106C1E2001775FB /* logoiPadApp_76pt.png */; };
+		A636520C2106C1E6001775FB /* logoiPadSpootlight7_40pt.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FB2106C1E2001775FB /* logoiPadSpootlight7_40pt.png */; };
+		A636520D2106C1E6001775FB /* logoiPhoneSpootlight7_40pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FC2106C1E2001775FB /* logoiPhoneSpootlight7_40pt@3x.png */; };
+		A636520E2106C1E6001775FB /* logoiPadNotifications_20pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FD2106C1E3001775FB /* logoiPadNotifications_20pt@2x.png */; };
+		A636520F2106C1E6001775FB /* logoiPadNotifications_20pt.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FE2106C1E3001775FB /* logoiPadNotifications_20pt.png */; };
+		A63652102106C1E6001775FB /* logoiPadApp_76pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63651FF2106C1E4001775FB /* logoiPadApp_76pt@2x.png */; };
+		A63652112106C1E6001775FB /* logoiPadProApp_83.5pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652002106C1E4001775FB /* logoiPadProApp_83.5pt@2x.png */; };
+		A63652122106C1E6001775FB /* logoiPhoneSpootlight5_29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652012106C1E5001775FB /* logoiPhoneSpootlight5_29pt@2x.png */; };
+		A63652132106C1E6001775FB /* logoiPadSpootlight5_29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652022106C1E5001775FB /* logoiPadSpootlight5_29pt@2x.png */; };
+		A63652142106C1E6001775FB /* logoiPhoneNotification_20pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652032106C1E5001775FB /* logoiPhoneNotification_20pt@3x.png */; };
+		A63652152106C1E6001775FB /* logoiPhoneNotification_20pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652042106C1E6001775FB /* logoiPhoneNotification_20pt@2x.png */; };
+		A63652172106C358001775FB /* logostore_1024pt.png in Resources */ = {isa = PBXBuildFile; fileRef = A63652162106C358001775FB /* logostore_1024pt.png */; };
 		A63AB78020732842006C3E3A /* GetParkListByDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AB77F20732842006C3E3A /* GetParkListByDistrict.swift */; };
 		A63B34361FC7BCCD00D15F61 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B34351FC7BCCD00D15F61 /* LoginController.swift */; };
 		A63B34381FC7EAF000D15F61 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B34371FC7EAF000D15F61 /* Order.swift */; };
@@ -81,9 +100,14 @@
 		A66AAA702077DD5F00A5FD3E /* BMKClusterQuadtree.m in Sources */ = {isa = PBXBuildFile; fileRef = A66AAA692077DD5E00A5FD3E /* BMKClusterQuadtree.m */; };
 		A66AAA712077DD5F00A5FD3E /* BMKClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A66AAA6A2077DD5E00A5FD3E /* BMKClusterManager.m */; };
 		A66AAA722077DD5F00A5FD3E /* BMKClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = A66AAA6E2077DD5F00A5FD3E /* BMKClusterAlgorithm.m */; };
+		A678646820FC93AB00A5CB7C /* chongdiantu.png in Resources */ = {isa = PBXBuildFile; fileRef = A678646520FC93A900A5CB7C /* chongdiantu.png */; };
+		A678646920FC93AB00A5CB7C /* zhifutu.png in Resources */ = {isa = PBXBuildFile; fileRef = A678646620FC93AA00A5CB7C /* zhifutu.png */; };
+		A678646A20FC93AB00A5CB7C /* putongtu.png in Resources */ = {isa = PBXBuildFile; fileRef = A678646720FC93AB00A5CB7C /* putongtu.png */; };
 		A67D98571FD4E399002DC3AD /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A67D98561FD4E399002DC3AD /* AlipaySDK.bundle */; };
 		A67D98591FD4E39E002DC3AD /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67D98581FD4E39E002DC3AD /* AlipaySDK.framework */; };
 		A67D985F1FD4E434002DC3AD /* AliSdkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D985E1FD4E434002DC3AD /* AliSdkManager.swift */; };
+		A685161B20BE87C400F02715 /* ParkDetailByShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A685161A20BE87C400F02715 /* ParkDetailByShare.swift */; };
+		A685161D20BE87E900F02715 /* ParkDetailByNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A685161C20BE87E900F02715 /* ParkDetailByNormal.swift */; };
 		A6859E62205617310043B080 /* UpdateShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6859E61205617310043B080 /* UpdateShareController.swift */; };
 		A6859E65205671050043B080 /* UsefulPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6859E64205671050043B080 /* UsefulPickerView.swift */; };
 		A6859E672056712F0043B080 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6859E662056712F0043B080 /* Picker.swift */; };
@@ -143,18 +167,19 @@
 		A6B72E7520A19E67007212D9 /* i_csh.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B72E6F20A19E66007212D9 /* i_csh.png */; };
 		A6B72E7720A1AF60007212D9 /* i_hx.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B72E7620A1AF60007212D9 /* i_hx.png */; };
 		A6B72E7920A1AF6F007212D9 /* i_xx.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B72E7820A1AF6E007212D9 /* i_xx.png */; };
+		A6C2464820CE78AB00BA2C12 /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C2464720CE78AB00BA2C12 /* SwiftyTextField.swift */; };
 		A6C502521FC55559000512B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C502511FC55559000512B9 /* TabBarController.swift */; };
 		A6C515FD20A9800A00A04006 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C515FB20A9800A00A04006 /* libssl.a */; };
 		A6C515FE20A9800A00A04006 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C515FC20A9800A00A04006 /* libcrypto.a */; };
-		A6C5160020AA6E0700A04006 /* ParkDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C515FF20AA6E0700A04006 /* ParkDetailController.swift */; };
+		A6C5160020AA6E0700A04006 /* ParkDetailByCharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C515FF20AA6E0700A04006 /* ParkDetailByCharging.swift */; };
 		A6C57E521FCCF1A400AB1F42 /* gxcwtb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6C57E511FCCF1A300AB1F42 /* gxcwtb.jpg */; };
 		A6C57E551FCCF22D00AB1F42 /* YellowParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C57E541FCCF22D00AB1F42 /* YellowParkController.swift */; };
 		A6C57E571FCCF25500AB1F42 /* BlueParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C57E561FCCF25500AB1F42 /* BlueParkController.swift */; };
 		A6C57E591FCCF27600AB1F42 /* GreenParkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C57E581FCCF27600AB1F42 /* GreenParkController.swift */; };
 		A6C57E5B1FCD030F00AB1F42 /* ParkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C57E5A1FCD030F00AB1F42 /* ParkDetail.swift */; };
 		A6C62DB520B454AD00EB66A6 /* HelpTjpak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C62DB420B454AD00EB66A6 /* HelpTjpak.swift */; };
-		A6CD766E1FDAD0E000C13C57 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD766D1FDAD0E000C13C57 /* test.swift */; };
 		A6D0637D20687DF1003B332F /* PileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0637C20687DF1003B332F /* PileController.swift */; };
+		A6D5763720EDF02F007C23B8 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5763620EDF02F007C23B8 /* NewsController.swift */; };
 		A6D763911FC6BA6D0095607C /* yinlian.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D763901FC6BA6D0095607C /* yinlian.png */; };
 		A6D7639F1FC6BA940095607C /* csh12.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D763921FC6BA930095607C /* csh12.png */; };
 		A6D763A01FC6BA940095607C /* csh5.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D763931FC6BA930095607C /* csh5.png */; };
@@ -190,8 +215,12 @@
 		A6D988AB209C5D4A003047F0 /* ccz.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D9888D209C5D46003047F0 /* ccz.png */; };
 		A6D988AC209C5D4A003047F0 /* dzzf.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D9888E209C5D47003047F0 /* dzzf.png */; };
 		A6DB986420A9172300A47F60 /* CallBackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DB986320A9172300A47F60 /* CallBackData.swift */; };
+		A6DD132620EDF1EC007BE896 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD132520EDF1EC007BE896 /* News.swift */; };
 		A6DF00CF1FCF900800DE9C30 /* MyShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DF00CE1FCF900800DE9C30 /* MyShareController.swift */; };
 		A6DF00D11FCF910800DE9C30 /* MyShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DF00D01FCF910800DE9C30 /* MyShare.swift */; };
+		A6E5467920E36EF8003D1FC6 /* PileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5467820E36EF8003D1FC6 /* PileDetail.swift */; };
+		A6E5467B20E3728F003D1FC6 /* ChargePark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5467A20E3728F003D1FC6 /* ChargePark.swift */; };
+		A6E5467F20E3864A003D1FC6 /* ChargeParkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5467E20E3864A003D1FC6 /* ChargeParkDetail.swift */; };
 		A6E59F501FCD5D7B00319F19 /* CurrentPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E59F4F1FCD5D7B00319F19 /* CurrentPayController.swift */; };
 		A6E59F521FCD60D700319F19 /* WaitPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E59F511FCD60D700319F19 /* WaitPayController.swift */; };
 		A6E727B620AE980900C2C37F /* 首页2fsiPhonePortraitiOS56_320x568pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E727A920AE980600C2C37F /* 首页2fsiPhonePortraitiOS56_320x568pt@2x.png */; };
@@ -268,11 +297,12 @@
 		A60E67851FE0CAC600137F5E /* huiqipao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huiqipao.png; sourceTree = "<group>"; };
 		A60E67861FE0CAC600137F5E /* lvqipao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lvqipao.png; sourceTree = "<group>"; };
 		A60E67871FE0CAC600137F5E /* huangqipao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huangqipao.png; sourceTree = "<group>"; };
-		A60FE7BF1FCEA74000EF4A1A /* SwiftyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
 		A60FE7C01FCEA74000EF4A1A /* SwiftyVerificationCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyVerificationCodeView.swift; sourceTree = "<group>"; };
 		A612F6DF1FE7BF08006BC5AF /* JPUSHService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JPUSHService.h; path = Pods/JPush/JPUSHService.h; sourceTree = "<group>"; };
 		A613FB9D209BE86400C44F98 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		A614A0251FCA8C440088EABB /* ParkListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkListController.swift; sourceTree = "<group>"; };
+		A61505D520C931F9006F9F43 /* mylocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mylocation.png; sourceTree = "<group>"; };
+		A61505DB20CE6E41006F9F43 /* AliPayOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliPayOrder.swift; sourceTree = "<group>"; };
 		A6175FAC1FC2C7E500616220 /* CarLifeUrlDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLifeUrlDisplay.swift; sourceTree = "<group>"; };
 		A61DEF1B1FD7845A00666C9C /* PayOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayOrder.swift; sourceTree = "<group>"; };
 		A61FFF5D1FBE8D6D00126C98 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -294,6 +324,24 @@
 		A62B215820A2E230006DA94D /* WXApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXApiManager.swift; sourceTree = "<group>"; };
 		A630132B1FCE576D00CA896F /* YuYueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuYueController.swift; sourceTree = "<group>"; };
 		A634CF9D1FCFFB39000A5D4E /* MyMoneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyController.swift; sourceTree = "<group>"; };
+		A63651F42106C1DF001775FB /* logoiPhoneApp_60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneApp_60pt@2x.png"; sourceTree = "<group>"; };
+		A63651F52106C1DF001775FB /* logoiPhoneSpootlight7_40pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneSpootlight7_40pt@2x.png"; sourceTree = "<group>"; };
+		A63651F62106C1E0001775FB /* logoiPadSpootlight5_29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoiPadSpootlight5_29pt.png; sourceTree = "<group>"; };
+		A63651F72106C1E0001775FB /* logoiPhoneSpootlight5_29pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneSpootlight5_29pt@3x.png"; sourceTree = "<group>"; };
+		A63651F82106C1E1001775FB /* logoiPhoneApp_60pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneApp_60pt@3x.png"; sourceTree = "<group>"; };
+		A63651F92106C1E1001775FB /* logoiPadSpootlight7_40pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPadSpootlight7_40pt@2x.png"; sourceTree = "<group>"; };
+		A63651FA2106C1E2001775FB /* logoiPadApp_76pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoiPadApp_76pt.png; sourceTree = "<group>"; };
+		A63651FB2106C1E2001775FB /* logoiPadSpootlight7_40pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoiPadSpootlight7_40pt.png; sourceTree = "<group>"; };
+		A63651FC2106C1E2001775FB /* logoiPhoneSpootlight7_40pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneSpootlight7_40pt@3x.png"; sourceTree = "<group>"; };
+		A63651FD2106C1E3001775FB /* logoiPadNotifications_20pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPadNotifications_20pt@2x.png"; sourceTree = "<group>"; };
+		A63651FE2106C1E3001775FB /* logoiPadNotifications_20pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoiPadNotifications_20pt.png; sourceTree = "<group>"; };
+		A63651FF2106C1E4001775FB /* logoiPadApp_76pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPadApp_76pt@2x.png"; sourceTree = "<group>"; };
+		A63652002106C1E4001775FB /* logoiPadProApp_83.5pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPadProApp_83.5pt@2x.png"; sourceTree = "<group>"; };
+		A63652012106C1E5001775FB /* logoiPhoneSpootlight5_29pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneSpootlight5_29pt@2x.png"; sourceTree = "<group>"; };
+		A63652022106C1E5001775FB /* logoiPadSpootlight5_29pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPadSpootlight5_29pt@2x.png"; sourceTree = "<group>"; };
+		A63652032106C1E5001775FB /* logoiPhoneNotification_20pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneNotification_20pt@3x.png"; sourceTree = "<group>"; };
+		A63652042106C1E6001775FB /* logoiPhoneNotification_20pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoiPhoneNotification_20pt@2x.png"; sourceTree = "<group>"; };
+		A63652162106C358001775FB /* logostore_1024pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logostore_1024pt.png; sourceTree = "<group>"; };
 		A63AB77F20732842006C3E3A /* GetParkListByDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParkListByDistrict.swift; sourceTree = "<group>"; };
 		A63B34351FC7BCCD00D15F61 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A63B34371FC7EAF000D15F61 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -336,9 +384,14 @@
 		A66AAA6C2077DD5E00A5FD3E /* BMKClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKClusterAlgorithm.h; sourceTree = "<group>"; };
 		A66AAA6D2077DD5F00A5FD3E /* BMKClusterQuadtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKClusterQuadtree.h; sourceTree = "<group>"; };
 		A66AAA6E2077DD5F00A5FD3E /* BMKClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKClusterAlgorithm.m; sourceTree = "<group>"; };
+		A678646520FC93A900A5CB7C /* chongdiantu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chongdiantu.png; sourceTree = "<group>"; };
+		A678646620FC93AA00A5CB7C /* zhifutu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhifutu.png; sourceTree = "<group>"; };
+		A678646720FC93AB00A5CB7C /* putongtu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = putongtu.png; sourceTree = "<group>"; };
 		A67D98561FD4E399002DC3AD /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		A67D98581FD4E39E002DC3AD /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		A67D985E1FD4E434002DC3AD /* AliSdkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliSdkManager.swift; sourceTree = "<group>"; };
+		A685161A20BE87C400F02715 /* ParkDetailByShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailByShare.swift; sourceTree = "<group>"; };
+		A685161C20BE87E900F02715 /* ParkDetailByNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailByNormal.swift; sourceTree = "<group>"; };
 		A6859E61205617310043B080 /* UpdateShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateShareController.swift; sourceTree = "<group>"; };
 		A6859E64205671050043B080 /* UsefulPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulPickerView.swift; sourceTree = "<group>"; };
 		A6859E662056712F0043B080 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
@@ -405,18 +458,19 @@
 		A6B72E6F20A19E66007212D9 /* i_csh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i_csh.png; sourceTree = "<group>"; };
 		A6B72E7620A1AF60007212D9 /* i_hx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i_hx.png; sourceTree = "<group>"; };
 		A6B72E7820A1AF6E007212D9 /* i_xx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i_xx.png; sourceTree = "<group>"; };
+		A6C2464720CE78AB00BA2C12 /* SwiftyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
 		A6C502511FC55559000512B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A6C515FB20A9800A00A04006 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		A6C515FC20A9800A00A04006 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		A6C515FF20AA6E0700A04006 /* ParkDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailController.swift; sourceTree = "<group>"; };
+		A6C515FF20AA6E0700A04006 /* ParkDetailByCharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailByCharging.swift; sourceTree = "<group>"; };
 		A6C57E511FCCF1A300AB1F42 /* gxcwtb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gxcwtb.jpg; sourceTree = "<group>"; };
 		A6C57E541FCCF22D00AB1F42 /* YellowParkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowParkController.swift; sourceTree = "<group>"; };
 		A6C57E561FCCF25500AB1F42 /* BlueParkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueParkController.swift; sourceTree = "<group>"; };
 		A6C57E581FCCF27600AB1F42 /* GreenParkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenParkController.swift; sourceTree = "<group>"; };
 		A6C57E5A1FCD030F00AB1F42 /* ParkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetail.swift; sourceTree = "<group>"; };
 		A6C62DB420B454AD00EB66A6 /* HelpTjpak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTjpak.swift; sourceTree = "<group>"; };
-		A6CD766D1FDAD0E000C13C57 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		A6D0637C20687DF1003B332F /* PileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PileController.swift; sourceTree = "<group>"; };
+		A6D5763620EDF02F007C23B8 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		A6D763901FC6BA6D0095607C /* yinlian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yinlian.png; sourceTree = "<group>"; };
 		A6D763921FC6BA930095607C /* csh12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csh12.png; sourceTree = "<group>"; };
 		A6D763931FC6BA930095607C /* csh5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csh5.png; sourceTree = "<group>"; };
@@ -452,8 +506,12 @@
 		A6D9888D209C5D46003047F0 /* ccz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ccz.png; sourceTree = "<group>"; };
 		A6D9888E209C5D47003047F0 /* dzzf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dzzf.png; sourceTree = "<group>"; };
 		A6DB986320A9172300A47F60 /* CallBackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallBackData.swift; sourceTree = "<group>"; };
+		A6DD132520EDF1EC007BE896 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A6DF00CE1FCF900800DE9C30 /* MyShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShareController.swift; sourceTree = "<group>"; };
 		A6DF00D01FCF910800DE9C30 /* MyShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShare.swift; sourceTree = "<group>"; };
+		A6E5467820E36EF8003D1FC6 /* PileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PileDetail.swift; sourceTree = "<group>"; };
+		A6E5467A20E3728F003D1FC6 /* ChargePark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePark.swift; sourceTree = "<group>"; };
+		A6E5467E20E3864A003D1FC6 /* ChargeParkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeParkDetail.swift; sourceTree = "<group>"; };
 		A6E59F4F1FCD5D7B00319F19 /* CurrentPayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPayController.swift; sourceTree = "<group>"; };
 		A6E59F511FCD60D700319F19 /* WaitPayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitPayController.swift; sourceTree = "<group>"; };
 		A6E727A920AE980600C2C37F /* 首页2fsiPhonePortraitiOS56_320x568pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页2fsiPhonePortraitiOS56_320x568pt@2x.png"; sourceTree = "<group>"; };
@@ -632,6 +690,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A61505DA20CE6E30006F9F43 /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				A61505DB20CE6E41006F9F43 /* AliPayOrder.swift */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
 		A6258D271FCBEBEF00101165 /* personController */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +727,24 @@
 		A6515C981FC675C0002C6232 /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
+				A63652162106C358001775FB /* logostore_1024pt.png */,
+				A63651FA2106C1E2001775FB /* logoiPadApp_76pt.png */,
+				A63651FF2106C1E4001775FB /* logoiPadApp_76pt@2x.png */,
+				A63651FE2106C1E3001775FB /* logoiPadNotifications_20pt.png */,
+				A63651FD2106C1E3001775FB /* logoiPadNotifications_20pt@2x.png */,
+				A63652002106C1E4001775FB /* logoiPadProApp_83.5pt@2x.png */,
+				A63651F62106C1E0001775FB /* logoiPadSpootlight5_29pt.png */,
+				A63652022106C1E5001775FB /* logoiPadSpootlight5_29pt@2x.png */,
+				A63651FB2106C1E2001775FB /* logoiPadSpootlight7_40pt.png */,
+				A63651F92106C1E1001775FB /* logoiPadSpootlight7_40pt@2x.png */,
+				A63651F42106C1DF001775FB /* logoiPhoneApp_60pt@2x.png */,
+				A63651F82106C1E1001775FB /* logoiPhoneApp_60pt@3x.png */,
+				A63652042106C1E6001775FB /* logoiPhoneNotification_20pt@2x.png */,
+				A63652032106C1E5001775FB /* logoiPhoneNotification_20pt@3x.png */,
+				A63652012106C1E5001775FB /* logoiPhoneSpootlight5_29pt@2x.png */,
+				A63651F72106C1E0001775FB /* logoiPhoneSpootlight5_29pt@3x.png */,
+				A63651F52106C1DF001775FB /* logoiPhoneSpootlight7_40pt@2x.png */,
+				A63651FC2106C1E2001775FB /* logoiPhoneSpootlight7_40pt@3x.png */,
 				A6E727AD20AE980700C2C37F /* 首页2fsiPadPortraitiOS56_768x1024pt.png */,
 				A6E727AA20AE980600C2C37F /* 首页2fsiPadPortraitiOS56_768x1024pt@2x.png */,
 				A6E727B120AE980800C2C37F /* 首页2fsiPadPortraitiOS789_768x1024pt.png */,
@@ -698,6 +782,10 @@
 		A65C879B20A283A60085BFFC /* map */ = {
 			isa = PBXGroup;
 			children = (
+				A678646520FC93A900A5CB7C /* chongdiantu.png */,
+				A678646720FC93AB00A5CB7C /* putongtu.png */,
+				A678646620FC93AA00A5CB7C /* zhifutu.png */,
+				A61505D520C931F9006F9F43 /* mylocation.png */,
 				A622CF5420BD4D520093B390 /* m_lx.png */,
 				A622CF5520BD4D520093B390 /* m_pt.png */,
 				A602ECA520AD5D070056C055 /* kc.png */,
@@ -722,6 +810,7 @@
 			children = (
 				A6A2AA6F2092CDBA00983BBB /* AddressCheck.swift */,
 				A613FB9D209BE86400C44F98 /* MapController.swift */,
+				A6D5763620EDF02F007C23B8 /* NewsController.swift */,
 			);
 			path = mapmanager;
 			sourceTree = "<group>";
@@ -767,6 +856,7 @@
 		A6B1854B1FB3025800BF856E /* tjpark */ = {
 			isa = PBXGroup;
 			children = (
+				A61505DA20CE6E30006F9F43 /* alipay */,
 				A6DB986220A9170200A47F60 /* delegate */,
 				A6D98872209C5D0B003047F0 /* newui */,
 				A65FF8F6209AF71B006A3459 /* nav */,
@@ -813,11 +903,9 @@
 		A6B1857B1FB3034D00BF856E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				A60FE7BF1FCEA74000EF4A1A /* SwiftyTextField.swift */,
 				A60FE7C01FCEA74000EF4A1A /* SwiftyVerificationCodeView.swift */,
 				A6175FAC1FC2C7E500616220 /* CarLifeUrlDisplay.swift */,
 				A67D985E1FD4E434002DC3AD /* AliSdkManager.swift */,
-				A6CD766D1FDAD0E000C13C57 /* test.swift */,
 				A6859E64205671050043B080 /* UsefulPickerView.swift */,
 				A6859E662056712F0043B080 /* Picker.swift */,
 				A6859E68205671470043B080 /* PickerView.swift */,
@@ -827,6 +915,7 @@
 				A62B215820A2E230006DA94D /* WXApiManager.swift */,
 				A6C62DB420B454AD00EB66A6 /* HelpTjpak.swift */,
 				A68EC5CB20B666D200F8A472 /* Explain.swift */,
+				A6C2464720CE78AB00BA2C12 /* SwiftyTextField.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -908,6 +997,9 @@
 				A65401B320734C79001188EE /* DistrictAddress.swift */,
 				A65401B52074A236001188EE /* District.swift */,
 				A65FF8F42093235B006A3459 /* Address.swift */,
+				A6E5467820E36EF8003D1FC6 /* PileDetail.swift */,
+				A6E5467A20E3728F003D1FC6 /* ChargePark.swift */,
+				A6DD132520EDF1EC007BE896 /* News.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -932,8 +1024,8 @@
 				A6B72E5F20A19961007212D9 /* i_jsznj.png */,
 				A6B72E5C20A1995E007212D9 /* i_gd.png */,
 				A6B72E5E20A19960007212D9 /* i_zvw.png */,
-				A6B72E5420A19488007212D9 /* search1.png */,
 				A6B72E4F20A1769E007212D9 /* i_login.png */,
+				A6B72E5420A19488007212D9 /* search1.png */,
 				A6B72E4D20A17663007212D9 /* i_mapbj.png */,
 				A6B72E4B20A17626007212D9 /* i_chat.png */,
 				A6D98884209C5D3B003047F0 /* iconindex.png */,
@@ -965,7 +1057,10 @@
 				A6C57E581FCCF27600AB1F42 /* GreenParkController.swift */,
 				A630132B1FCE576D00CA896F /* YuYueController.swift */,
 				A6D0637C20687DF1003B332F /* PileController.swift */,
-				A6C515FF20AA6E0700A04006 /* ParkDetailController.swift */,
+				A6C515FF20AA6E0700A04006 /* ParkDetailByCharging.swift */,
+				A685161A20BE87C400F02715 /* ParkDetailByShare.swift */,
+				A685161C20BE87E900F02715 /* ParkDetailByNormal.swift */,
+				A6E5467E20E3864A003D1FC6 /* ChargeParkDetail.swift */,
 			);
 			path = parkController;
 			sourceTree = "<group>";
@@ -1271,12 +1366,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63652062106C1E6001775FB /* logoiPhoneSpootlight7_40pt@2x.png in Resources */,
+				A63652152106C1E6001775FB /* logoiPhoneNotification_20pt@2x.png in Resources */,
 				A6B72E7920A1AF6F007212D9 /* i_xx.png in Resources */,
 				A6D763A31FC6BA940095607C /* csh2.png in Resources */,
 				A60E67891FE0CAC700137F5E /* lvqipao.png in Resources */,
 				A6D98895209C5D4A003047F0 /* bg3.png in Resources */,
 				A6FDF0261FC41D2F00271D73 /* green.png in Resources */,
 				A6D763A21FC6BA940095607C /* csh7.png in Resources */,
+				A636520B2106C1E6001775FB /* logoiPadApp_76pt.png in Resources */,
 				A6B72E3420A16979007212D9 /* xtsz.png in Resources */,
 				A6FDF02B1FC41E1C00271D73 /* iconwd.png in Resources */,
 				A6E727BD20AE980900C2C37F /* 首页2fsiPadPortraitWOSBiOS56_768x1004pt@2x.png in Resources */,
@@ -1291,6 +1389,7 @@
 				A60E677E1FE0C1BE00137F5E /* chongdian.png in Resources */,
 				A6B72E2E20A16939007212D9 /* tcdd.png in Resources */,
 				A60E67721FE0BBDD00137F5E /* releasecar.png in Resources */,
+				A636520A2106C1E6001775FB /* logoiPadSpootlight7_40pt@2x.png in Resources */,
 				A602ECA020AD5A2F0056C055 /* yytc.png in Resources */,
 				A6B72E5520A1948A007212D9 /* search1.png in Resources */,
 				A6E727BC20AE980900C2C37F /* 首页2fsiPhonePortraitiOS89_414x736pt@3x.png in Resources */,
@@ -1318,10 +1417,12 @@
 				A6B72E7320A19E67007212D9 /* csh_xc.png in Resources */,
 				A6D98897209C5D4A003047F0 /* huangdian.png in Resources */,
 				A6B72E6720A19963007212D9 /* i_jsznj.png in Resources */,
+				A636520D2106C1E6001775FB /* logoiPhoneSpootlight7_40pt@3x.png in Resources */,
 				A6FDF02E1FC41E1C00271D73 /* icondd.png in Resources */,
 				A602ECA420AD5B640056C055 /* yyy.png in Resources */,
 				A6515C911FC65976002C6232 /* nopage.png in Resources */,
 				A60E67761FE0BD5D00137F5E /* myTicket.png in Resources */,
+				A636520F2106C1E6001775FB /* logoiPadNotifications_20pt.png in Resources */,
 				A6D9889A209C5D4A003047F0 /* bg2.png in Resources */,
 				A6D988A6209C5D4A003047F0 /* dqwz.png in Resources */,
 				A6B72E7020A19E67007212D9 /* csh_czcx.png in Resources */,
@@ -1329,10 +1430,12 @@
 				A6D763AA1FC6BA940095607C /* csh11.png in Resources */,
 				A6D98891209C5D4A003047F0 /* ditc.png in Resources */,
 				A6E727BA20AE980900C2C37F /* 首页2fsiPadPortraitiOS56_768x1024pt.png in Resources */,
+				A636520C2106C1E6001775FB /* logoiPadSpootlight7_40pt.png in Resources */,
 				A6B72E6120A19963007212D9 /* i_cwcz.png in Resources */,
 				A6D7639F1FC6BA940095607C /* csh12.png in Resources */,
 				A6B72E6320A19963007212D9 /* i_cwyy.png in Resources */,
 				A6B72E5020A1769E007212D9 /* i_login.png in Resources */,
+				A63652142106C1E6001775FB /* logoiPhoneNotification_20pt@3x.png in Resources */,
 				A6B72E7120A19E67007212D9 /* csh_cdz.png in Resources */,
 				A6E727B620AE980900C2C37F /* 首页2fsiPhonePortraitiOS56_320x568pt@2x.png in Resources */,
 				A662C78C1FDF6A5F0035067F /* unchecked@2x.png in Resources */,
@@ -1342,8 +1445,11 @@
 				A6FDF02D1FC41E1C00271D73 /* iconsy.png in Resources */,
 				A6B185521FB3025800BF856E /* Main.storyboard in Resources */,
 				A6258D201FCBBC9800101165 /* xintushi.png in Resources */,
+				A678646A20FC93AB00A5CB7C /* putongtu.png in Resources */,
+				A678646920FC93AB00A5CB7C /* zhifutu.png in Resources */,
 				A6D763A81FC6BA940095607C /* csh8.png in Resources */,
 				A6B72E3620A16979007212D9 /* wdqb.png in Resources */,
+				A63652082106C1E6001775FB /* logoiPhoneSpootlight5_29pt@3x.png in Resources */,
 				A6FDF02C1FC41E1C00271D73 /* iconyy.png in Resources */,
 				A602ECA820AD5D080056C055 /* mc.png in Resources */,
 				A60E677A1FE0BDE100137F5E /* myJiFen.png in Resources */,
@@ -1354,6 +1460,7 @@
 				A6B72E7720A1AF60007212D9 /* i_hx.png in Resources */,
 				A6B72E7420A19E67007212D9 /* csh_dzss.png in Resources */,
 				A6B475AF1FDE774800BD9E0A /* lanqipao.png in Resources */,
+				A63652102106C1E6001775FB /* logoiPadApp_76pt@2x.png in Resources */,
 				A6D763A11FC6BA940095607C /* csh6.png in Resources */,
 				A6D988AC209C5D4A003047F0 /* dzzf.png in Resources */,
 				A6D988A9209C5D4A003047F0 /* fx.png in Resources */,
@@ -1363,11 +1470,14 @@
 				A6F3B4D01FC421BF00F31E9E /* weixin.png in Resources */,
 				A602ECA720AD5D080056C055 /* kc.png in Resources */,
 				A60E67831FE0C71B00137F5E /* carList.png in Resources */,
+				A678646820FC93AB00A5CB7C /* chongdiantu.png in Resources */,
 				A6B72E6020A19963007212D9 /* i_wzcx.png in Resources */,
 				A6D98892209C5D4A003047F0 /* zntc.png in Resources */,
 				A60E67701FE0B96200137F5E /* mycar.png in Resources */,
 				A60E67741FE0BD1C00137F5E /* myShareCar.png in Resources */,
+				A63652112106C1E6001775FB /* logoiPadProApp_83.5pt@2x.png in Resources */,
 				A6515CD01FC67990002C6232 /* logoestore_1024pt.png in Resources */,
+				A63652172106C358001775FB /* logostore_1024pt.png in Resources */,
 				A6D763A51FC6BA940095607C /* csh9.png in Resources */,
 				A6B72E6520A19963007212D9 /* i_clnj.png in Resources */,
 				A6B72E6420A19963007212D9 /* i_gd.png in Resources */,
@@ -1380,13 +1490,20 @@
 				A6FDF0241FC41CB600271D73 /* zhifubao.png in Resources */,
 				A64D505320A56CA100C904D2 /* xc_04.png in Resources */,
 				A6B72E4C20A17626007212D9 /* i_chat.png in Resources */,
+				A63652122106C1E6001775FB /* logoiPhoneSpootlight5_29pt@2x.png in Resources */,
 				A6E727BB20AE980900C2C37F /* 首页2fsiPhonePortraitiOS56_320x480pt@2x.png in Resources */,
 				A6D763A01FC6BA940095607C /* csh5.png in Resources */,
 				A6B72E3520A16979007212D9 /* wdgxcw.png in Resources */,
 				A6B72E6920A19DDB007212D9 /* tx.png in Resources */,
+				A636520E2106C1E6001775FB /* logoiPadNotifications_20pt@2x.png in Resources */,
+				A63652052106C1E6001775FB /* logoiPhoneApp_60pt@2x.png in Resources */,
+				A63652092106C1E6001775FB /* logoiPhoneApp_60pt@3x.png in Resources */,
 				A602EC9E20AD59A60056C055 /* 首页2fs.png in Resources */,
 				A6B72E4E20A17664007212D9 /* i_mapbj.png in Resources */,
+				A63652132106C1E6001775FB /* logoiPadSpootlight5_29pt@2x.png in Resources */,
+				A61505D620C931FA006F9F43 /* mylocation.png in Resources */,
 				A60E67781FE0BD7D00137F5E /* myYouHui.png in Resources */,
+				A63652072106C1E6001775FB /* logoiPadSpootlight5_29pt.png in Resources */,
 				A64D505720A5702F00C904D2 /* xc_00.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1436,6 +1553,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tjpark/Pods-tjpark-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/LCRefresh/LCRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/RadioButtons/RadioButtons.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1443,6 +1561,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LCRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioButtons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1493,13 +1612,15 @@
 				A6DF00CF1FCF900800DE9C30 /* MyShareController.swift in Sources */,
 				A634CF9E1FCFFB39000A5D4E /* MyMoneyController.swift in Sources */,
 				A6175FAD1FC2C7E500616220 /* CarLifeUrlDisplay.swift in Sources */,
+				A61505DC20CE6E41006F9F43 /* AliPayOrder.swift in Sources */,
 				A66AAA712077DD5F00A5FD3E /* BMKClusterManager.m in Sources */,
-				A6CD766E1FDAD0E000C13C57 /* test.swift in Sources */,
 				A6F1D5111FD919630017D271 /* APViewController.m in Sources */,
 				A6859E6B205671CD0043B080 /* ToolBarView.swift in Sources */,
 				A6B1854F1FB3025800BF856E /* ViewController.swift in Sources */,
+				A685161D20BE87E900F02715 /* ParkDetailByNormal.swift in Sources */,
 				A6D763B51FC6C3D20095607C /* Park.swift in Sources */,
 				A6859E65205671050043B080 /* UsefulPickerView.swift in Sources */,
+				A6DD132620EDF1EC007BE896 /* News.swift in Sources */,
 				A6D763B71FC6C9970095607C /* Person.swift in Sources */,
 				A65401B62074A236001188EE /* District.swift in Sources */,
 				A6859E69205671470043B080 /* PickerView.swift in Sources */,
@@ -1512,12 +1633,16 @@
 				A642DF291FCC0E8100A0304D /* CompletePayController.swift in Sources */,
 				A66AAA702077DD5F00A5FD3E /* BMKClusterQuadtree.m in Sources */,
 				A6B1854D1FB3025800BF856E /* AppDelegate.swift in Sources */,
+				A6E5467920E36EF8003D1FC6 /* PileDetail.swift in Sources */,
 				A6F2D8451FD7BBE40013BE8C /* RegController.swift in Sources */,
 				A6E59F521FCD60D700319F19 /* WaitPayController.swift in Sources */,
-				A6C5160020AA6E0700A04006 /* ParkDetailController.swift in Sources */,
+				A6C5160020AA6E0700A04006 /* ParkDetailByCharging.swift in Sources */,
 				A66AAA6F2077DD5F00A5FD3E /* BMKClusterItem.m in Sources */,
 				A6C57E551FCCF22D00AB1F42 /* YellowParkController.swift in Sources */,
+				A6E5467F20E3864A003D1FC6 /* ChargeParkDetail.swift in Sources */,
 				A6D8B5391FC2B08B004FFDED /* OrderPayController.swift in Sources */,
+				A685161B20BE87C400F02715 /* ParkDetailByShare.swift in Sources */,
+				A6D5763720EDF02F007C23B8 /* NewsController.swift in Sources */,
 				A6F1D5121FD919630017D271 /* APRSASigner.m in Sources */,
 				A65FF8F8209AF74F006A3459 /* MyInformation.swift in Sources */,
 				A66AAA722077DD5F00A5FD3E /* BMKClusterAlgorithm.m in Sources */,
@@ -1534,11 +1659,12 @@
 				A651743C1FD63E93000FC76C /* SharePark.swift in Sources */,
 				A61DEF1C1FD7845A00666C9C /* PayOrder.swift in Sources */,
 				A68EC5CC20B666D200F8A472 /* Explain.swift in Sources */,
+				A6E5467B20E3728F003D1FC6 /* ChargePark.swift in Sources */,
 				A6AB383D208DD93C009B7B8A /* TestController.swift in Sources */,
 				A65401B420734C79001188EE /* DistrictAddress.swift in Sources */,
 				A613FB9E209BE86400C44F98 /* MapController.swift in Sources */,
 				A642DF251FCBEDDB00A0304D /* Car.swift in Sources */,
-				A60FE7C11FCEA74100EF4A1A /* SwiftyTextField.swift in Sources */,
+				A6C2464820CE78AB00BA2C12 /* SwiftyTextField.swift in Sources */,
 				A6C62DB520B454AD00EB66A6 /* HelpTjpak.swift in Sources */,
 				A6906C30209FDF5300CA01BB /* ImageVIewExtension.swift in Sources */,
 				A6F7F7811FC0882E004B128F /* OrderListController.swift in Sources */,
@@ -1642,7 +1768,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1694,7 +1820,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -1712,7 +1838,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = tjpark/tjpark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6VU5HXB4C;
+				DEVELOPMENT_TEAM = CH9STLG68D;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1753,7 +1879,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = tjpark/tjpark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6VU5HXB4C;
+				DEVELOPMENT_TEAM = CH9STLG68D;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

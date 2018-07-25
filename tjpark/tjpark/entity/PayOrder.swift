@@ -21,4 +21,6 @@ class PayOrder  {
      var parkRecordId : String = ""
      var space_id : String = ""
     var share_id : String = ""
+     var parkType : String = ""
+      var parkTime : String = ""
 }

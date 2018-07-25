@@ -44,6 +44,14 @@ class BlueParkController: UIViewController,UITableViewDataSource,UITableViewDele
     //预约按钮
 
     @IBAction func yuYueBtn(_ sender: UIButton) {
+        if !park.lable.contains("预约"){
+            let alert=UIAlertController(title: "提示",message: "此停车场不支持预约。",preferredStyle: .alert )
+            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         if  UserDefaults.standard.string(forKey: "personId") == nil{
             let alert=UIAlertController(title: "提示",message: "请先登录。",preferredStyle: .alert )
             let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
@@ -74,10 +82,13 @@ class BlueParkController: UIViewController,UITableViewDataSource,UITableViewDele
     var tmp:Int = 0
     //重写显示方法，如果下拉列表发生了变化，会再次调用此方法
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+      
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "priceCell") as! UITableViewCell
         cell.accessoryType = UITableViewCellAccessoryType.none
         self.tableView.rowHeight = 100
+        
+      	
         //获取label
         let label = cell.viewWithTag(11) as! UILabel
         label.text = parkDetail.fee_time
@@ -100,6 +111,7 @@ class BlueParkController: UIViewController,UITableViewDataSource,UITableViewDele
               return cell
         }
         else{
+            tmp = 0
            return cell2
         }
  

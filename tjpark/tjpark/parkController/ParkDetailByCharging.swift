@@ -10,19 +10,23 @@
 import UIKit
 import SwiftyJSON
 
-class ParkDetailController: UIViewController {
+//充电停车场详情
+class ParkDetailByCharging: UIViewController {
     //获取屏幕宽度
     let screenWidth =  UIScreen.main.bounds.size.width
     //获取屏幕宽度
     let screenHeight =  UIScreen.main.bounds.size.height
     var park = Park()
      var parkDetail = ParkDetail()
+     var chargePark = ChargePark()
+
+  
     @IBOutlet weak var parkTitle: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         parkTitle.text = park.place_name
-        getParkDetail(packid: park.id)
+//        getParkDetail(packid: park.id)
         //第一行：停车场名称
         var label1 = UILabel(frame: CGRect(x:screenWidth*0.05, y:10, width:screenWidth*0.7, height:30))
         label1.font = UIFont(name: "Helvetica", size: 16)!
@@ -60,21 +64,51 @@ class ParkDetailController: UIViewController {
             label10.font = UIFont(name: "Helvetica", size: 13)!
             label10.text = park.place_total_num
             label10.textAlignment = .center
+            label10.textColor = UIColor.gray
             scrollView.addSubview(label10)
         }
         //第二行，类型图片,最多5种
-        if park.lable.contains("预约"){
+        var currentWidth = self.view.frame.width*0.05
+        if park.lable.contains("地上"){
             let imageView = UIImageView(image:UIImage(named:"ditc"))
-            imageView.frame = CGRect(x:screenWidth*0.05, y:50, width:self.view.frame.width*0.15, height:28)
+            imageView.frame = CGRect(x:currentWidth, y:50, width:self.view.frame.width*0.15, height:28)
             scrollView.addSubview(imageView)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("预约"){
+            let imageView2 = UIImageView(image:UIImage(named:"yytc"))
+            imageView2.frame = CGRect(x:currentWidth, y:50, width:self.view.frame.width*0.15, height:28)
+            scrollView.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("充电"){
+            
+            let imageView2 = UIImageView(image:UIImage(named:"ccz"))
+            imageView2.frame = CGRect(x:currentWidth, y:50, width:self.view.frame.width*0.15, height:28)
+            scrollView.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("共享"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:50, width:self.view.frame.width*0.15, height:28)
+            scrollView.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+            
+        }
+        if park.lable.contains("在线支付"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:50, width:self.view.frame.width*0.15, height:28)
+            scrollView.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+            
         }
         //第三行，图片和停车场具体位置
         let imageView = UIImageView(image:UIImage(named:"dqwz"))
         imageView.frame = CGRect(x:screenWidth*0.05, y:100, width:31, height:31)
         scrollView.addSubview(imageView)
         var label3 = UITextView(frame: CGRect(x:screenWidth*0.05+40, y:95, width:screenWidth-(screenWidth*0.05+40), height:50))
-        label3.font = UIFont(name: "Helvetica", size: 15)!
-        label3.text = park.place_address + "       距我" + park.distance
+        label3.font = UIFont(name: "Helvetica", size: 13)!
+        label3.text = park.place_address + park.distance
         label3.isEditable = false
         scrollView.addSubview(label3)
         //第四行，横线
@@ -86,39 +120,39 @@ class ParkDetailController: UIViewController {
         label5.font = UIFont(name: "Helvetica", size: 13)!
         label5.text = "营业时长"
         label5.textAlignment = .center
-         label5.textColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
+         label5.textColor = UIColor.gray
         scrollView.addSubview(label5)
         
         var label6 = UILabel(frame: CGRect(x:screenWidth*0.25, y:170, width:screenWidth*0.25, height:20))
         label6.font = UIFont(name: "Helvetica", size: 13)!
         label6.text = "总车位数"
          label6.textAlignment = .center
-         label6.textColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
+         label6.textColor = UIColor.gray
         scrollView.addSubview(label6)
         
         var label7 = UILabel(frame: CGRect(x:screenWidth*0.5, y:170, width:screenWidth*0.25, height:20))
         label7.font = UIFont(name: "Helvetica", size: 13)!
         label7.text = "免费时长"
          label7.textAlignment = .center
-         label7.textColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
+         label7.textColor = UIColor.gray
         scrollView.addSubview(label7)
         
         var label8 = UILabel(frame: CGRect(x:screenWidth*0.75, y:170, width:screenWidth*0.25, height:20))
         label8.font = UIFont(name: "Helvetica", size: 13)!
         label8.text = "封顶价格"
          label8.textAlignment = .center
-        label8.textColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
+        label8.textColor = UIColor.gray
         scrollView.addSubview(label8)
         //第六行，具体信息
         var label9 = UILabel(frame: CGRect(x:0, y:200, width:screenWidth*0.25, height:20))
         label9.font = UIFont(name: "Helvetica", size: 13)!
-        label9.text = parkDetail.open_time
+        label9.text = park.pile_time
         label9.textAlignment = .center
         scrollView.addSubview(label9)
 
         var label11 = UILabel(frame: CGRect(x:screenWidth*0.5, y:200, width:screenWidth*0.25, height:20))
         label11.font = UIFont(name: "Helvetica", size: 13)!
-        label11.text = parkDetail.period_type
+        label11.text = park.pile_fee
         label11.textAlignment = .center
         scrollView.addSubview(label11)
         
@@ -133,67 +167,49 @@ class ParkDetailController: UIViewController {
         scrollView.addSubview(label13)
         
         //动态数据scrollview
-      
-  
+              //快充图片
+        let imageView2 = UIImageView(image:UIImage(named:"kc"))
+        imageView2.frame = CGRect(x:screenWidth*0.05, y:245, width:37, height:33)
+        scrollView.addSubview(imageView2)
+            //快充数量
+        var label14 = UILabel(frame: CGRect(x:screenWidth*0.05+40, y:250, width:screenWidth*0.25, height:20))
+        label14.font = UIFont(name: "Helvetica", size: 13)!
+        label14.text = "空闲" + park.fast_pile_space_num + " / 共" + park.fast_pile_total_num
+        label14.textAlignment = .center
+        scrollView.addSubview(label14)
+        //慢充图片
+        let imageView3 = UIImageView(image:UIImage(named:"mc"))
+        imageView3.frame = CGRect(x:screenWidth*0.30+60, y:245, width:37, height:33)
+        scrollView.addSubview(imageView3)
+         //慢充数量
+        var label15 = UILabel(frame: CGRect(x:screenWidth*0.30+100, y:250, width:screenWidth*0.25, height:20))
+        label15.font = UIFont(name: "Helvetica", size: 13)!
+        label15.text = "空闲" + park.slow_pile_space_num + " / 共" + park.slow_pile_total_num
+        label15.textAlignment = .center
+        scrollView.addSubview(label15)
+        
+        //详细图片按钮
+        let imageView4 = UIImageView(image:UIImage(named:"tcdd"))
+        imageView4.frame = CGRect(x:screenWidth-50, y:245, width:30, height:30)
+        imageView4.isUserInteractionEnabled = true
+        imageView4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
+        scrollView.addSubview(imageView4)
+        
+        //第八行,横线
+        let label16:UILabel =  UILabel(frame:CGRect(x:0, y:288, width:screenWidth, height:2))
+        label16.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
+        scrollView.addSubview(label16)
     }
  
-    
- 
-    //调用远程接口
-    func getParkDetail(packid:String){
-        //获取费用 [{"s_time":"07:00","e_time":"17:00","t_fee":4,"fee_time":"07:00-17:00","park_time":"1小时","fee":"4.0元/小时","num":"4.0"}]
-         var strUrl1 =  String(format:TabBarController.windowIp + "/tjpark/app/AppWebservice/feePark?parkid='%@'",packid)
-        //获取详细信息 [{"lable":"地上,预约","start_time":"07:00","end_time":"17:00","type":"收费","period_type":"收费","open_time":"07:00-17:00"}]
-          var strUrl2 =  String(format:TabBarController.windowIp + "/tjpark/app/AppWebservice/detailPark?parkid='%@'",packid)
-        do {
-            let url1 = URL(string: strUrl1)
-            let str1 = try NSString(contentsOf: url1!, encoding: String.Encoding.utf8.rawValue)
-            if str1.isEqual(to: ""){
-                return
-            }
-            if let jsonData = str1.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false) {
-                //费用
-                let json = try JSON(data: jsonData)
-                 parkDetail.s_time = json[0]["s_time"].stringValue
-                  parkDetail.e_time = json[0]["e_time"].stringValue
-                  parkDetail.t_fee = json[0]["t_fee"].stringValue
-                  parkDetail.fee_time = json[0]["fee_time"].stringValue
-                  parkDetail.park_time = json[0]["park_time"].stringValue
-                  parkDetail.fee = json[0]["fee"].stringValue
-                 parkDetail.num = json[0]["num"].stringValue
-            }
-        }
-        catch{
-            print("error")
-        }
-        do {
-            let url2 = URL(string: strUrl2)
-            let str2 = try NSString(contentsOf: url2!, encoding: String.Encoding.utf8.rawValue)
-            if str2.isEqual(to: ""){
-                return
-            }
-            if let jsonData2 = str2.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false) {
-                let json = try JSON(data: jsonData2)
-                //详细信息
-                parkDetail.start_time = json[0]["start_time"].stringValue
-                parkDetail.end_time = json[0]["end_time"].stringValue
-                parkDetail.type = json[0]["type"].stringValue
-                parkDetail.period_type = json[0]["period_type"].stringValue
-                parkDetail.open_time = json[0]["open_time"].stringValue
-            }
-        }
-        catch{
-            print("error")
-        }
-
-    }
  
     
+    
+    //撤回按钮
     @IBAction func btnClose(_ sender: UIButton) {
         self.dismiss(animated:true, completion:nil)
     }
+
     //导航
-    
     @IBAction func daoHang(_ sender: UIButton) {
             var optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             //百度地图
@@ -239,10 +255,42 @@ class ParkDetailController: UIViewController {
             self.present(optionMenu, animated: true, completion: nil)
        
     }
-    //预约
     
+    
+    ///页面传参
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "yuYueIdentifier"{
+            let controller = segue.destination as! YuYueController
+            controller.park = park
+            controller.parkDetail = parkDetail
+        }
+        else if  segue.identifier == "showChargeInentifier" {
+            let controller = segue.destination as! ChargeParkDetail
+            controller.parkPileId = park.parkPileId
+            controller.placeName = park.place_name
+            
+        }
+    }
+    
+    
+    //预约
     @IBAction func yuYue(_ sender: UIButton) {
+        if !park.lable.contains("预约"){
+            if !park.lable.contains("预约"){
+                let alert=UIAlertController(title: "提示",message: "此停车场不支持预约。",preferredStyle: .alert )
+                let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        }
+         self.performSegue(withIdentifier: "yuYueIdentifier", sender: park)
         
-        
+    }
+    
+    //详情图片时间
+    //图片处理函数
+    @objc func touchSelect(sender:UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "showChargeInentifier", sender: nil)
     }
 }

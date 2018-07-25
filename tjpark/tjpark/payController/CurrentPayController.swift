@@ -24,19 +24,29 @@ class CurrentPayController: UIViewController {
     
     @IBOutlet weak var money: UILabel!
     
+    @IBOutlet weak var payBtn: UIButton!
     override func viewDidLoad() {
         getFee(parkid:order.park_id)
          parkName.text = order.place_name
         parkPrice.text = "收费标准:6元"
          parkStart.text = order.in_time
-         parkCurrent.text = order.in_time
+         parkCurrent.text = order.park_time
         money.text = order.fee + "元"
         payOrder.place_id = order.park_id
         
         payOrder.place_name = order.place_name
         payOrder.realMoney = order.fee
         payOrder.parkRecordId = order.id
-//        fee//需支付费用
+        payOrder.plate_number = order.place_number
+        payOrder.parkType = "正在计时"
+        if order.fee.elementsEqual("0"){
+            payBtn.isHidden = true
+            payBtn.isEnabled = false
+        }
+        else{
+            payBtn.isHidden = false
+            payBtn.isEnabled = true
+        }
     }
     //点击此按钮会跳转到支付页面
     @IBAction func payOrder(_ sender: UIButton) {
@@ -58,7 +68,7 @@ class CurrentPayController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "currentZhiFuIdentifier"{
             let controller = segue.destination as! OrderPayController
-        
+           payOrder.parkTime = order.park_time
             controller.payOrder = sender  as! PayOrder
         }
     }

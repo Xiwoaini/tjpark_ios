@@ -8,17 +8,32 @@
 
 import UIKit
 import SwiftyJSON
+import LCRefresh
 /**
  订单页面(tabbar订单页面绑定类)
  */
 class OrderListController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     //定义order数组，用于显示
     var orderList :[Order] = []
-  
+    //定义展示数组
+    var orderListShow :[Order] = []
+    //首次加载
+    var isFirstLoad = true
+    
+    
     @IBOutlet weak var tableView: UITableView!
     var activityIndicator : UIActivityIndicatorView!
+ 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //加载进度条
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle:
+            UIActivityIndicatorViewStyle.white)
+        activityIndicator.color = UIColor.white
+        activityIndicator.frame = CGRect.init(x:self.view.frame.width/2-25,y:self.view.frame.height/2-25,width:50.0,height:50.0)
+        activityIndicator.center=self.view.center
+        
+        activityIndicator.backgroundColor = UIColor.gray
+      self.view.addSubview(activityIndicator);
         //去除最后一行, 底部分割线左对齐
         tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsets.zero
@@ -35,15 +50,75 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
         tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.cellLayoutMarginsFollowReadableWidth = false
-        //加载进度条
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle:
-        UIActivityIndicatorViewStyle.gray)
+        
         play()
-        activityIndicator.center=self.view.center
-        self.view.addSubview(activityIndicator);
+       
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //下拉刷新
+        self.tableView.refreshHeader = LCRefreshHeader.init(refreshBlock: {
+            weak var weakSelf = self
+             weakSelf!.tableView.resetDataLoad()
+            //是否刷新完成
+            if weakSelf!.tableView.isHeaderRefreshing() {
+                if UserDefaults.standard.string(forKey: "personId") != nil{
+                    self.orderList.removeAll()
+                    self.orderListShow.removeAll()
+                    self.getOrderList(customerid:UserDefaults.standard.string(forKey: "personId")!)
+                    self.tableView.reloadData()
+                    weakSelf!.tableView.endHeaderRefreshing()
+                   
+                }
+            }
+        })
+
+        
+        //加载更多
+        self.tableView.refreshFooter = LCRefreshFooter.init(refreshBlock: {
+            //定义当前展示数组长度
+            var tmpHeight = self.orderListShow.count
+            //总的数据长度
+            var allHeight = self.orderList.count
+            //是否刷新完成
+            weak var weakSelf = self
+            if weakSelf!.tableView.isFooterRefreshing() {
+                
+                if allHeight - tmpHeight > 5 {
+                    for index in tmpHeight..<tmpHeight+5  {
+                        if index >= tmpHeight+5{
+                            break;
+                        }
+                        self.orderListShow.append(self.orderList[index])
+                        
+                    }
+                }
+                else if allHeight - tmpHeight <= 5 && allHeight - tmpHeight > 0{
+                    for index in tmpHeight..<allHeight  {
+                        self.orderListShow.append(self.orderList[index])
+                    }
+                }
+                else{
+                 weakSelf!.tableView.endFooterRefreshing()
+                    weakSelf!.tableView.setDataLoadover()
+                   self.tableView.reloadData()
+                    
+                    return
+                }
+                self.tableView.reloadData()
+                weakSelf!.tableView.endFooterRefreshing()
+                
+                
+            }
+            
+        })
         
         
+    }
+      override func viewDidAppear(_ animated: Bool) {
         if  UserDefaults.standard.string(forKey: "personId") == nil{
             //        检测登录状态
             
@@ -51,68 +126,69 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
             let okAction = UIAlertAction(title: "好", style: .default, handler: {
                 action in
                 self.stop()
-                self.performSegue(withIdentifier: "logindetailIdentifier", sender: nil)
+                self.tabBarController?.selectedIndex = 3
             })
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
         //判断是否有订单
         if  UserDefaults.standard.string(forKey: "personId") ==  nil || UserDefaults.standard.string(forKey: "personId") as! String ==  ""{
             return
         }
         else{
-            //给数组赋值
-            orderList = getOrderList(customerid:UserDefaults.standard.string(forKey: "personId")! as String!)
+            if isFirstLoad {
+                self.orderList = getOrderList(customerid:UserDefaults.standard.string(forKey: "personId")! as String!)
+                isFirstLoad = false
+                tableView.reloadData()
+            }
+   
         }
         stop()
-     
     }
-//    //页面初始化
-//      override func viewWillAppear(_ animated: Bool) {
-//
-//    }
+    
+   
  
     //显示多少行
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return orderList.count
+        return orderListShow.count
     }
     
     
     //重写显示方法，如果下拉列表发生了变化，会再次调用此方法
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
+       
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "orderListCell") as! UITableViewCell
         self.tableView.sectionHeaderHeight = 40
         self.tableView.sectionFooterHeight = 40
-      self.tableView.rowHeight = 160
+        self.tableView.rowHeight = 150
         //时间
         let label1 = cell.viewWithTag(1) as! UILabel
-        label1.text = "   " + orderList[indexPath.row].in_time
-        label1.backgroundColor =  UIColor(red: 230/255, green: 236/255, blue: 232/255, alpha: 100)
+        label1.text = "   " + orderListShow[indexPath.row].in_time
+
         //停车场名称
         let label2 = cell.viewWithTag(2) as! UILabel
-        label2.text = orderList[indexPath.row].place_name
+        label2.text = orderListShow[indexPath.row].place_name
 
         //具体时间
         let label4 = cell.viewWithTag(4) as! UILabel
-        label4.text = orderList[indexPath.row].park_time
+        label4.text = orderListShow[indexPath.row].park_time
 
         //具体费用
-        let label6 = cell.viewWithTag(6) as! UILabel
-        label6.text = orderList[indexPath.row].real_park_fee
+//        let label6 = cell.viewWithTag(6) as! UILabel
+//        label6.text = orderListShow[indexPath.row].real_park_fee
 
         //具体号码
         let label8 = cell.viewWithTag(8) as! UILabel
-        label8.text = orderList[indexPath.row].place_number
+        label8.text = orderListShow[indexPath.row].place_number
         //订单状态
         let label9 = cell.viewWithTag(9) as! UILabel
-        label9.text = orderList[indexPath.row].status
+        label9.text = orderListShow[indexPath.row].status
  
         return cell
     }
+    
     
     
     
@@ -187,7 +263,9 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
                      order.place_number = json[Int(index)!]["place_number"].stringValue
                     order.out_time = json[Int(index)!]["out_time"].stringValue
                     order.reservation_park_fee = json[Int(index)!]["reservation_park_fee"].stringValue
-                   
+                    if Int(index)! < 5{
+                        orderListShow.append(order)
+                    }
                     orderList.append(order)
                 }
             }
@@ -211,7 +289,7 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
         //进度条停止转动
         activityIndicator.stopAnimating()
     }
- 
+    
  
        
 }

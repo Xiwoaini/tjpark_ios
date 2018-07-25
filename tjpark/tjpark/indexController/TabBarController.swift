@@ -11,11 +11,13 @@
 import UIKit
 class TabBarController: UITabBarController{
     //服务器接口地址
-  static var  windowIp =  "http://60.29.41.58:3000"
-    //本地
-//  static var  windowIp = "http://192.168.168.221:8080"
+       static var  windowIp =  "http://60.29.41.58:3000"
     //王重阳
-//      static var  windowIp = "http://192.168.10.125:3000"
+//     static var  windowIp = "http://192.168.10.153:8080"
+    //自己
+//    static var  windowIp = "http://192.168.10.180:8080"
+//    本地
+//     static var  windowIp = "http://192.168.168.221:8080"
     
     static var selectValue = 0
  
@@ -23,13 +25,33 @@ class TabBarController: UITabBarController{
     @IBOutlet weak var tabbarItem: UITabBar!
     override func viewDidLoad() {
         self.selectedIndex = TabBarController.selectValue
+        if  self.selectedIndex == 1{
+            tabbarItem.isHidden = true
+        }
+        else {
+            tabbarItem.isHidden = false
+        }
         TabBarController.selectValue = 0
     }
     
     
- 
-  
- 
+    override func viewWillLayoutSubviews() {
+        var oriTabBarFrame = tabbarItem.frame
+        oriTabBarFrame.origin.y -= 5
+        oriTabBarFrame.size.height += 10
+        tabBar.frame = oriTabBarFrame
+        
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.tag == 2{
+            tabbarItem.isHidden = true
+        }
+        else {
+            tabbarItem.isHidden = false
+        }
+        
+    }
 }
 
 //拓展类

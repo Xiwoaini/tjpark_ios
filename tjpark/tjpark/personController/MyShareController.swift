@@ -51,7 +51,6 @@ class MyShareController: UIViewController,UITableViewDataSource,UITableViewDeleg
             //       发布时间
             let label1 = cell.viewWithTag(1) as! UILabel
             label1.text = "发布时间: " + myShare.create_time
-            label1.backgroundColor =  UIColor(red: 230/255, green: 236/255, blue: 232/255, alpha: 100)
             //       停车场名称
             let label2 = cell.viewWithTag(2) as! UILabel
             label2.text = myShare.place_name
@@ -79,7 +78,7 @@ class MyShareController: UIViewController,UITableViewDataSource,UITableViewDeleg
             //       发布时间
             let label1 = cell.viewWithTag(1) as! UILabel
             label1.text = "发布时间: " + myShare.create_time
-            label1.backgroundColor =  UIColor(red: 230/255, green: 236/255, blue: 232/255, alpha: 100)
+//            label1.backgroundColor =  UIColor(red: 230/255, green: 236/255, blue: 232/255, alpha: 100)
             //       停车场名称
             let label2 = cell.viewWithTag(2) as! UILabel
             label2.text = myShare.place_name
@@ -98,6 +97,7 @@ class MyShareController: UIViewController,UITableViewDataSource,UITableViewDeleg
                 //     状态
                 let label6 = cell.viewWithTag(9) as! UILabel
                 label6.text = myShare.share_status
+            label6.textColor = UIColor.gray
           
                 //   按钮状态
                 let btn = cell.viewWithTag(10) as! UIButton

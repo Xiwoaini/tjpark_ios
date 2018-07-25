@@ -14,6 +14,7 @@ import UIKit
 class ClusterAnnotation : BMKPointAnnotation {
       var park : Park!
     var size: UInt = 0
+//    var num : UInt = 0
     var num : String = ""
 }
  

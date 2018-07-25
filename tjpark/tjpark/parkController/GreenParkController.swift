@@ -29,6 +29,7 @@ class GreenParkController: UIViewController,UITableViewDataSource,UITableViewDel
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.cellLayoutMarginsFollowReadableWidth = false
+        tableView.allowsSelection = false
         
         getParkDetail(packid:park.id)
          parkName.text = park.place_name
@@ -63,13 +64,13 @@ class GreenParkController: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     //处理列表项的选中事件
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        self.tableView!.deselectRow(at: indexPath, animated: true)
-        let todo = parkDetailList[indexPath.row] as! ParkDetail
-        self.performSegue(withIdentifier: "yuYueIdentifier", sender: todo)
-
-
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        //        self.tableView!.deselectRow(at: indexPath, animated: true)
+//        let todo = parkDetailList[indexPath.row] as! ParkDetail
+//        self.performSegue(withIdentifier: "yuYueIdentifier", sender: todo)
+//
+//
+//    }
     
     
     @IBAction func yuYueBtn(_ sender: Any) {

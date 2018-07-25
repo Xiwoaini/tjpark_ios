@@ -67,9 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
     
     //重写支付方法，会发起回调
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        // WXApiManager 需要自己创建，下面就会说到。
-//        return WXApi.handleOpen(url, delegate: WXApiManager.shared)
-        
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url as URL!, standbyCallback: {
                 (resultDic) -> Void in
@@ -81,6 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
                 //调起支付结果处理
                 AliSdkManager.aliSdkManager.showResult(result: resultDic! as NSDictionary);
             })
+        }
+            // WXApiManager 需要自己创建，下面就会说到。
+        else {
+            return WXApi.handleOpen(url, delegate: WXApiManager.shared)
         }
         return true;
     }

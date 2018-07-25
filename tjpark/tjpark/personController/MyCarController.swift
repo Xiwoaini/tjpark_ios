@@ -117,8 +117,12 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
         
     }
     
+    //总是返回到tabbar个人信息页面
     @IBAction func close(_ sender: UIButton) {
-        self.dismiss(animated:true, completion:nil)
+        TestController.isFirst = true
+        TabBarController.selectValue = 3
+        self.performSegue(withIdentifier: "exitPersonIdentifier", sender: self)
+        
     }
     
     

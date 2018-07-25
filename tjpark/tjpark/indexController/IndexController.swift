@@ -4,13 +4,7 @@
 //
 //  Created by 潘宁 on 2017/11/8.
 //  Copyright © 2017年 fut. All rights reserved.
-//
-//
-//  ViewController.swift
-//  lockCall
-//
-//  Created by 潘宁 on 2017/10/17.
-//  Copyright © 2017年 fut. All rights reserved.
+
 import UIKit
 import CoreLocation
 import MapKit
@@ -887,6 +881,10 @@ class IndexController:  UIViewController,BMKMapViewDelegate,CLLocationManagerDel
                     park.is_share = json[Int(index)!]["is_share"].stringValue
                     park.place_type_name = json[Int(index)!]["place_type_name"].stringValue
                     park.share_num = json[Int(index)!]["share_num"].stringValue
+                    if park.lable.contains("充电"){
+                         park.parkPileId = json[Int(index)!]["parkPileId"].stringValue
+                    }
+                
                    //往数组中添加标注
                     let clusterItem = BMKClusterItemImpl()
                     clusterItem.park = park

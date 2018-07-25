@@ -12,12 +12,13 @@ import MapKit
 import SwiftyJSON
 //地图控制,默认为普通停车场
 class MapController: UIViewController,BMKMapViewDelegate{
- 
+    static   var  selectType = "type1"
     //传递到详情的停车场参数
       var park = Park()
     //子视图，用户点击某个标记之后弹出
       var view1 = UIView()
       let annotation =  BMKPointAnnotation()
+    var isFirstLoading = true
     
     //进度条
     var activityIndicator : UIActivityIndicatorView!
@@ -37,18 +38,34 @@ class MapController: UIViewController,BMKMapViewDelegate{
     override func viewDidLoad() {
         //加载进度条
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle:
-            UIActivityIndicatorViewStyle.gray)
+            UIActivityIndicatorViewStyle.white)
+        activityIndicator.color = UIColor.white
+        activityIndicator.frame = CGRect.init(x:self.view.frame.width/2-25,y:self.view.frame.height/2-25,width:50.0,height:50.0)
         activityIndicator.center=self.view.center
+        
+        activityIndicator.backgroundColor = UIColor.gray
         self.view.addSubview(activityIndicator);
+        
     }
     
+    //加载地图
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if isFirstLoading{
+            play()
+            DispatchQueue.main.async{
+                self.viewDidAppear(false)
+            }
+        }
+        
+    }
     /**
      初始化地图
      */
-    override func viewWillAppear(_ animated: Bool) {
-        play()
+    override func viewDidAppear(_ animated: Bool) {
+        
         getParkList()
-        selectParkType(label: "type1")
+        selectParkType(label: MapController.selectType)
          mapView?.delegate = self
         center.latitude = IndexController.lat
         center.longitude = IndexController.lon
@@ -62,28 +79,29 @@ class MapController: UIViewController,BMKMapViewDelegate{
         myLocation.title = "当前位置"
         mapView.addAnnotation(myLocation)
         //地图增加图片
-        let imageView1 = UIImageView(image:UIImage(named:"m_pt"))
-        imageView1.frame = CGRect(x:self.view.frame.width-50, y:50, width:30, height:30)
+        let imageView1 = UIImageView(image:UIImage(named:"putongtu"))
+        imageView1.frame = CGRect(x:self.view.frame.width-50, y:50, width:40, height:40)
         imageView1.tag = 1
          imageView1.isUserInteractionEnabled = true
         imageView1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
         mapView.addSubview(imageView1)
-        let imageView2 = UIImageView(image:UIImage(named:"fjcdz"))
-        imageView2.frame = CGRect(x:self.view.frame.width-50, y:100, width:30, height:30)
+        let imageView2 = UIImageView(image:UIImage(named:"chongdiantu"))
+        imageView2.frame = CGRect(x:self.view.frame.width-50, y:100, width:40, height:40)
               imageView2.tag = 2
             imageView2.isUserInteractionEnabled = true
         imageView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
         mapView.addSubview(imageView2)
-        let imageView3 = UIImageView(image:UIImage(named:"m_lx"))
-        imageView3.frame = CGRect(x:self.view.frame.width-50, y:150, width:30, height:30)
+        let imageView3 = UIImageView(image:UIImage(named:"zhifutu"))
+        imageView3.frame = CGRect(x:self.view.frame.width-50, y:150, width:40, height:40)
             imageView3.tag = 3
             imageView3.isUserInteractionEnabled = true
         imageView3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
         mapView.addSubview(imageView3)
         //增加百度地图
         self.view.addSubview(mapView!)
+        isFirstLoading = false
         stop()
-        
+        viewWillAppear(true)
     }
     
     //自定义标点图片
@@ -93,7 +111,9 @@ class MapController: UIViewController,BMKMapViewDelegate{
         var newAnnotation:BMKPinAnnotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotation")
         newAnnotation.canShowCallout = false
         if annotation.title!().elementsEqual("当前位置"){
-            
+             let reSizen = CGSize(width: 20, height: 20)
+            newAnnotation.image = UIImage(named: "mylocation")
+            newAnnotation.image = newAnnotation.image?.reSizeImage(reSize:reSizen)
             return newAnnotation
         }
         var annotation1 = ClusterAnnotation()
@@ -102,13 +122,16 @@ class MapController: UIViewController,BMKMapViewDelegate{
         if annotation1.size > 1 {
             let reSize1 = CGSize(width: 60, height: 60)
             
-            newAnnotation.image = UIImage(named: "huangqipao")?.waterMarkedImage3(waterMarkText: String(annotation1.num))
+            newAnnotation.image = UIImage(named: "landian")?.waterMarkedImage3(waterMarkText: String(annotation1.num))
             
             newAnnotation.image = newAnnotation.image?.reSizeImage(reSize:reSize1)
             return newAnnotation
         }
         else{
             //    自定义标注点图标
+            if annotation1.num.elementsEqual(""){
+                return newAnnotation
+            }
             if Int(annotation1.num)! > 9 && Int(annotation1.num)! <= 99 {
                 if annotation1.park.lable.contains("充电"){
                     newAnnotation.image = UIImage(named: "huangqipao")?.waterMarkedImage(waterMarkText: String(annotation1.park.fast_pile_space_num))
@@ -173,63 +196,85 @@ class MapController: UIViewController,BMKMapViewDelegate{
             }
         }
         //初始化子视图
-        view1 = UIView(frame: CGRect(x:0, y:self.view.frame.height*0.75, width:self.view.frame.width, height:self.view.frame.height*0.25))
+        view1 = UIView(frame: CGRect(x:0, y:self.view.frame.height*0.76, width:self.view.frame.width, height:self.view.frame.height*0.24))
         view1.backgroundColor = UIColor.white
         parkDetail = annotation1.park
          park = parkDetail
         //添加点击事件
         view1.isUserInteractionEnabled = true
-         view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewSelect)))
+        if parkDetail.lable.contains("共享"){
+            view1.tag = 102
+            view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(detailParkShare(_:))))
+        }
+        else if parkDetail.lable.contains("充电"){
+            view1.tag = 103
+            view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(detailParkCharging(_:))))
+        }
+        else{
+            view1.tag = 101
+            view1.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(detailParkNormal(_:))))
+        }
+        
         //创建子视图里面的各种标签
         //第一行：停车场名称
-        var label1 = UILabel(frame: CGRect(x:10, y:self.view1.frame.height*0.08, width:self.view.frame.width, height:self.view1.frame.height*0.1))
-        label1.font = UIFont(name: "Helvetica", size: 17)!
-        label1.text = parkDetail.place_name
+        var label1 = UILabel(frame: CGRect(x:10, y:self.view1.frame.height*0.1, width:self.view.frame.width, height:self.view1.frame.height*0.1))
+        label1.font = UIFont(name: "Helvetica", size: 16)!
+        label1.text = parkDetail.place_name + "  " + parkDetail.distance
         label1.textColor = UIColor.black
         view1.addSubview(label1)
+    
         //第一行: 距离
         //第一行：剩余车位
         //第二行：停车场类型(充电，共享等):图片
-        if parkDetail.lable.contains("预约"){
-            let imageView1 = UIImageView(image:UIImage(named:"yytc"))
-            imageView1.frame = CGRect(x:self.view.frame.width*0.03, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.16, height:self.view1.frame.height*0.15)
-            view1.addSubview(imageView1)
-            
+        var currentWidth = self.view.frame.width*0.05
+        if park.lable.contains("地上"){
+            let imageView = UIImageView(image:UIImage(named:"ditc"))
+            imageView.frame = CGRect(x:currentWidth, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.15, height:28)
+            view1.addSubview(imageView)
+            currentWidth = currentWidth + self.view.frame.width*0.2
         }
-        if parkDetail.lable.contains("地上"){
-            let imageView2 = UIImageView(image:UIImage(named:"ditc"))
-            imageView2.frame = CGRect(x:self.view.frame.width*0.22, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.16, height:self.view1.frame.height*0.15)
+        if park.lable.contains("预约"){
+            let imageView2 = UIImageView(image:UIImage(named:"yytc"))
+            imageView2.frame = CGRect(x:currentWidth, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.15, height:28)
             view1.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
         }
-           if parkDetail.lable.contains("充电"){
-            let imageView3 = UIImageView(image:UIImage(named:"ccz"))
-            imageView3.frame = CGRect(x:self.view.frame.width*0.41, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.16, height:self.view1.frame.height*0.15)
+        if park.lable.contains("充电"){
+          
+            let imageView2 = UIImageView(image:UIImage(named:"ccz"))
+            imageView2.frame = CGRect(x:currentWidth, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.15, height:28)
+            view1.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("共享"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.15, height:28)
             view1.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+
         }
-           if parkDetail.lable.contains("电子支付"){
-            let imageView4 = UIImageView(image:UIImage(named:"dzzf"))
-            imageView4.frame = CGRect(x:self.view.frame.width*0.6, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.16, height:self.view1.frame.height*0.15)
-            view1.addSubview(imageView4)
-        }
-           if parkDetail.lable.contains("智能"){
-            let imageView5 = UIImageView(image:UIImage(named:"zntc"))
-            imageView5.frame = CGRect(x:self.view.frame.width*0.79, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.16, height:self.view1.frame.height*0.15)
-            view1.addSubview(imageView5)
+        if park.lable.contains("在线支付"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:self.view1.frame.height*0.25, width:self.view.frame.width*0.15, height:28)
+            view1.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+            
         }
         //充电停车场
         //第三行:价格
         if parkDetail.lable.contains("充电"){
+            
             let imageView6 = UIImageView(image:UIImage(named:"kc"))
-            imageView6.frame = CGRect(x:self.view.frame.width*0.03, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
+            imageView6.frame = CGRect(x:self.view.frame.width*0.03, y:self.view1.frame.height*0.35+28, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
             view1.addSubview(imageView6)
-            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.15, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
+            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.15, y:self.view1.frame.height*0.33+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
             label2.font = UIFont(name: "Helvetica", size: 12)!
             label2.text = "空闲 " + parkDetail.fast_pile_space_num + "/共" + parkDetail.fast_pile_total_num
             view1.addSubview(label2)
             let imageView7 = UIImageView(image:UIImage(named:"mc"))
-            imageView7.frame = CGRect(x:self.view.frame.width*0.4, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
+            imageView7.frame = CGRect(x:self.view.frame.width*0.4, y:self.view1.frame.height*0.35+28, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
             view1.addSubview(imageView7)
-            var label3 = UILabel(frame: CGRect(x:self.view.frame.width*0.52, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
+            var label3 = UILabel(frame: CGRect(x:self.view.frame.width*0.52, y:self.view1.frame.height*0.33+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
             label3.font = UIFont(name: "Helvetica", size: 12)!
             label3.text =   "空闲 " + parkDetail.slow_pile_space_num + "/共" + parkDetail.slow_pile_total_num
             view1.addSubview(label3)
@@ -238,39 +283,39 @@ class MapController: UIViewController,BMKMapViewDelegate{
         //共享停车场
         else if parkDetail.lable.contains("共享"){
             let imageView6 = UIImageView(image:UIImage(named:"kc"))
-            imageView6.frame = CGRect(x:self.view.frame.width*0.04, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
+            imageView6.frame = CGRect(x:self.view.frame.width*0.04, y:self.view1.frame.height*0.35+28, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
             view1.addSubview(imageView6)
-            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.16, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
+            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.16, y:self.view1.frame.height*0.33+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
             label2.font = UIFont(name: "Helvetica", size: 12)!
             label2.text = "空闲 " + parkDetail.share_num
             view1.addSubview(label2)
         }
         else{
             let imageView6 = UIImageView(image:UIImage(named:"kc"))
-            imageView6.frame = CGRect(x:self.view.frame.width*0.04, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
+            imageView6.frame = CGRect(x:self.view.frame.width*0.04, y:self.view1.frame.height*0.35+28, width:self.view.frame.width*0.1, height:self.view1.frame.height*0.15)
             view1.addSubview(imageView6)
-            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.16, y:self.view1.frame.height*0.5, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
+            var label2 = UILabel(frame: CGRect(x:self.view1.frame.width * 0.16, y:self.view1.frame.height*0.33+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.15))
             label2.font = UIFont(name: "Helvetica", size: 12)!
             label2.text = "空闲 " + parkDetail.space_num
             view1.addSubview(label2)
         }
+//        if parkDetail.lable.contains("预约"){
+//            //详情按钮
+//            let button2:UIButton = UIButton(type:.system)
+//            button2.frame = CGRect(x:self.view.frame.width*0.4, y:self.view1.frame.height*0.50+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.18)
+//            button2.setBackgroundImage(UIImage(named:"yyy"), for: .normal)
+//
+//            view1.addSubview(button2)
+//        }
  
 //        第四行，预约，导航
         let button1:UIButton = UIButton(type:.system)
-        button1.frame = CGRect(x:self.view.frame.width*0.1, y: self.view1.frame.height*0.75, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.18)
+        button1.frame = CGRect(x:self.view.frame.width*0.1, y: self.view1.frame.height*0.58+28, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.18)
         button1.setBackgroundImage(UIImage(named:"ydh"), for: .normal)
         button1.addTarget(self, action:#selector(tiaoZhuanClick(_:)) , for: .touchUpInside)
         button1.setTitleColor(UIColor.blue, for: UIControlState.normal)
         view1.addSubview(button1)
-        
-        //详情按钮
-        let button2:UIButton = UIButton(type:.system)
-        button2.frame = CGRect(x:self.view.frame.width*0.4, y:self.view1.frame.height*0.75, width:self.view.frame.width*0.2, height:self.view1.frame.height*0.18)
-         button2.setBackgroundImage(UIImage(named:"yyy"), for: .normal)
-//        button2.addTarget(self, action:#selector(detailPark(_:)) , for: .touchUpInside)
-         view1.addSubview(button2)
-        
- 
+
    
         self.view.addSubview(view1)
         return
@@ -401,8 +446,6 @@ class MapController: UIViewController,BMKMapViewDelegate{
             if let jsonData = str.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false) {
                 
                 var  point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(IndexController.lat,IndexController.lon));
-                
-                
                 let json = try JSON(data: jsonData)
                 for (index,subJson):(String, JSON) in json {
                     let park = Park()
@@ -415,7 +458,9 @@ class MapController: UIViewController,BMKMapViewDelegate{
                     var point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(Double(park.addpoint_y)!,Double(park.addpoint_x)!))
                     var  distance = BMKMetersBetweenMapPoints(point1,point2);
                     park.distance = "[" + String(format: "%.2f",distance/1000) + "km]"
-                    
+                    if park.lable.contains("充电"){
+                        park.parkPileId = json[Int(index)!]["parkPileId"].stringValue
+                    }
                     park.place_type = json[Int(index)!]["place_type"].stringValue
                     park.place_total_num = String(json[Int(index)!]["place_total_num"].intValue)
                     park.space_num = String(json[Int(index)!]["space_num"].intValue)
@@ -470,6 +515,7 @@ class MapController: UIViewController,BMKMapViewDelegate{
      type1 :红P，除了充电外所有停车场
      type2 :充电桩
      type3 :是否支持在线支付
+     type5 :预约
      */
     func selectParkType(label:String){
         MapController.clusterManager.clearClusterItems()
@@ -508,17 +554,44 @@ class MapController: UIViewController,BMKMapViewDelegate{
              else if label.elementsEqual("type3"){
                 for (key, value) in IndexController.parkDict
                 {
-                     if !value.lable.contains("在线支付"){
+                     if value.lable.contains("在线支付"){
                         var parkTmp = Park()
                         parkTmp = IndexController.parkDict[key]!
                     //往数组中添加标注
                     let clusterItem = BMKClusterItemImpl()
-                    clusterItem.park = park
+                    clusterItem.park = parkTmp
                     clusterItem.coor = CLLocationCoordinate2DMake(Double(parkTmp.addpoint_y)!, Double(parkTmp.addpoint_x)!)
                     MapController.clusterManager.add(clusterItem)
                     }
                 }
-         
+        }
+             else if label.elementsEqual("type4"){
+                for (key, value) in IndexController.parkDict
+                {
+                    if value.lable.contains("共享"){
+                        var parkTmp = Park()
+                        parkTmp = IndexController.parkDict[key]!
+                        //往数组中添加标注
+                        let clusterItem = BMKClusterItemImpl()
+                        clusterItem.park = parkTmp
+                        clusterItem.coor = CLLocationCoordinate2DMake(Double(parkTmp.addpoint_y)!, Double(parkTmp.addpoint_x)!)
+                        MapController.clusterManager.add(clusterItem)
+                    }
+                }
+        }
+             else if label.elementsEqual("type5"){
+                for (key, value) in IndexController.parkDict
+                {
+                    if value.lable.contains("预约"){
+                        var parkTmp = Park()
+                        parkTmp = IndexController.parkDict[key]!
+                        //往数组中添加标注
+                        let clusterItem = BMKClusterItemImpl()
+                        clusterItem.park = parkTmp
+                        clusterItem.coor = CLLocationCoordinate2DMake(Double(parkTmp.addpoint_y)!, Double(parkTmp.addpoint_x)!)
+                        MapController.clusterManager.add(clusterItem)
+                    }
+                }
         }
        
     }
@@ -552,19 +625,8 @@ class MapController: UIViewController,BMKMapViewDelegate{
         }
     
     }
-    //单击跳转到详情
-    @objc func viewSelect(sender:UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "parkDetailIdentifier", sender: park)
-    }
-    //在这个方法中给新页面传递参数
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "parkDetailIdentifier"{
-            let controller = segue.destination as! ParkDetailController
-            var park = Park()
-            park = sender as! Park
-            controller.park = park
-        }
-    }
+  
+   
     @objc  func tiaoZhuanClick(_ button:UIButton) {
         var optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         //百度地图
@@ -608,6 +670,37 @@ class MapController: UIViewController,BMKMapViewDelegate{
         }
         
         self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    //下面view详情按钮
+    @objc  func detailParkNormal(_ viewTmp:UIView) {
+            self.performSegue(withIdentifier: "blueIdentifier", sender: park)
+    }
+    //下面view详情按钮
+    @objc  func detailParkCharging(_ viewTmp:UIView) {
+        self.performSegue(withIdentifier: "yellowIdentifier", sender: park)
+    }
+    //下面view详情按钮
+    @objc  func detailParkShare(_ viewTmp:UIView) {
+        self.performSegue(withIdentifier: "greenIdentifier", sender: park)
+    }
+    //在这个方法中给新页面传递参数
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ 
+        if segue.identifier == "yellowIdentifier"{
+            let controller = segue.destination as! ParkDetailByCharging
+            controller.park = sender as! Park
+        }
+        else if segue.identifier == "blueIdentifier"{
+            
+            let controller = segue.destination as! BlueParkController
+            controller.park = sender as! Park
+        }
+        else  if segue.identifier == "greenIdentifier"{
+            let controller = segue.destination as! GreenParkController
+            controller.park = sender as! Park
+        }
+      
     }
    
 }

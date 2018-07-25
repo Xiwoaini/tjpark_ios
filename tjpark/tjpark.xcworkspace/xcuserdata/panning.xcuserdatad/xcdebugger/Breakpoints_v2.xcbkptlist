@@ -2,4 +2,70 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tjpark/personController/ShareReleaseController.swift"
+            timestampString = "554029151.216375"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "addShareSpace(place_id:space_num:name:phone:fee:start_time:end_time:customerid:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tjpark.ShareReleaseController.addShareSpace(place_id: Swift.String, space_num: Swift.String, name: Swift.String, phone: Swift.String, fee: Swift.String, start_time: Swift.String, end_time: Swift.String, customerid: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "tjpark"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/panning/Documents/tjpark_ios/tjpark/tjpark/personController/ShareReleaseController.swift"
+                  timestampString = "554029153.869019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "437">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tjpark.ShareReleaseController.addShareSpace(place_id: Swift.String, space_num: Swift.String, name: Swift.String, phone: Swift.String, fee: Swift.String, start_time: Swift.String, end_time: Swift.String, customerid: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "tjpark"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/panning/Documents/tjpark_ios/tjpark/tjpark/personController/ShareReleaseController.swift"
+                  timestampString = "554029153.882697"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "3270">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tjpark/parkController/ParkDetailByCharging.swift"
+            timestampString = "554104233.634131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

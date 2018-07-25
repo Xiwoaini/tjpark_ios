@@ -15,12 +15,7 @@ class YuYueController: UIViewController {
  
     @IBOutlet weak var parkName: UILabel!
     
-    @IBOutlet weak var parkDistance: UILabel!
-
-    @IBOutlet weak var parkType: UILabel!
-    
-    @IBOutlet weak var packAddress: UITextView!
-    
+ 
     @IBOutlet weak var timePicker: UIDatePicker!
     
     var timeTrue : UIButton?
@@ -31,9 +26,7 @@ class YuYueController: UIViewController {
     override func viewDidLoad() {
         carSelect = self.view.viewWithTag(5) as! UIButton
         parkName.text = park.place_name
-        parkDistance.text = park.distance
-        parkType.text = park.place_type
-        packAddress.text = park.place_address
+       
         var myCar = MyCarController()
         carList = myCar.getCarList(customerid:UserDefaults.standard.string(forKey: "personId")!)
         //将caList中的车牌号属性添加到pickerView1
@@ -128,8 +121,14 @@ class YuYueController: UIViewController {
                 parkDetail.realMoney = parkDetail.num
             }
             else{
-                lab.text = "预约金额" + String(Double(parkDetail.num)! * ceil(Double(tmpTime)/Double(3600))) + "元"
-                 parkDetail.realMoney = String(Double(parkDetail.num)! * ceil(Double(tmpTime)/Double(3600)))
+                if !parkDetail.num.elementsEqual("0"){
+                    lab.text = "预约金额" + String(Double(parkDetail.num)! * ceil(Double(tmpTime)/Double(3600))) + "元"
+                    parkDetail.realMoney = String(Double(parkDetail.num)! * ceil(Double(tmpTime)/Double(3600)))
+                }
+                else{
+                   lab.text = "无法获取当前停车场收费标准。"
+                }
+               
             }
            
             
@@ -170,7 +169,7 @@ class YuYueController: UIViewController {
           payOrder.reservation_fee = parkDetail.num
         
         if (parkDetail.realMoney.elementsEqual("")){
-            let alert=UIAlertController(title: "提示",message: "当前停车场费用问题暂时没有记录",preferredStyle: .alert )
+            let alert=UIAlertController(title: "提示",message: "无法获取当前停车场收费标准。",preferredStyle: .alert )
             let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
@@ -179,6 +178,7 @@ class YuYueController: UIViewController {
         
         payOrder.realMoney = parkDetail.realMoney
         payOrder.space_id = parkDetail.park_num
+        payOrder.parkType = "预约停车"
         self.performSegue(withIdentifier: "zhiFuIdentifier", sender: payOrder)
     }
     

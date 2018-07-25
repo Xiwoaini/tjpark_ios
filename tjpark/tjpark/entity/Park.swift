@@ -49,6 +49,6 @@ class Park  {
     var is_share :String = ""
     var place_type_name :String = ""
     var distance :String = ""
-    
+     var parkPileId :String = ""
     var share_num :String = ""
 }

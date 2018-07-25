@@ -5,7 +5,6 @@
 //  Created by lip on 17/4/6.
 //  Copyright © 2017年 lip. All rights reserved.
 //
-
 import UIKit
 
 
@@ -20,7 +19,7 @@ class SwiftyTextField: UITextField {
     override func deleteBackward() {
         super.deleteBackward()
         deleteDelegate?.didClickBackWard()
-
+        
     }
-
+    
 }

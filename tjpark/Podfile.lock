@@ -7,6 +7,7 @@ PODS:
   - JCore (1.1.6)
   - JPush (3.0.7):
     - JCore (~> 1.1.6)
+  - LCRefresh (0.1.16)
   - NIMSDK (4.3.0)
   - RadioButtons (2.2.0)
   - SnapKit (4.0.0)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - BaiduMapKit
   - iOS-AlipaySDK
   - JPush
+  - LCRefresh (~> 0.1.16)
   - NIMSDK
   - RadioButtons (~> 2.2.0)
   - SnapKit (~> 4.0.0)
@@ -39,12 +41,13 @@ SPEC CHECKSUMS:
   iOS-AlipaySDK: 97d1c1fe06083e5bf2d9b56981cf469eeb508b78
   JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
   JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
+  LCRefresh: 1f8e38a89d610017c2ac4260b2ab86cab2f8f06c
   NIMSDK: 4c7d69e30a1d7a45df07af3d28b87810510f6987
   RadioButtons: 36efab1dd6815bfcee34c557c97b6cd7da770a82
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 8cd73b154950360d79292a8dc8c0d0a85d258930
   WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
 
-PODFILE CHECKSUM: 50a4e554096624a123b238fc00a456991f36c40b
+PODFILE CHECKSUM: 477a7c9088878817d610aa7e6ff857626f7dbe1b
 
 COCOAPODS: 1.3.1

@@ -39,13 +39,12 @@ public class AliSdkManager: UIViewController {
         let returnCode:String = result["resultStatus"] as! String
         var returnMsg:String = result["memo"] as! String
         var subResultMsg:String = ""
-       
         switch  returnCode{
         case "6001":
-            
             //用户中途取消
             //跳转
             PayResultController.payResultStr == "支付失败。"
+              TestController.isFirst = true
             var sb = UIStoryboard(name: "Main", bundle:nil)
             var vc = sb.instantiateViewController(withIdentifier: "payResultStory") as! PayResultController
             self.navigationController?.pushViewController(vc, animated: true)
@@ -85,6 +84,7 @@ public class AliSdkManager: UIViewController {
                 }
                               }
              PayResultController.payResultStr = "支付成功"
+               TestController.isFirst = true
             //调用远程接口,上传信息
             do {
                 let strUrl =  str

@@ -13,9 +13,9 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
     //登录按钮
     @IBOutlet weak var userLogin: UIButton!
     //定义需要显示的下拉列表
-    let personList  = ["停车订单","我的车辆","我的钱包","长租车位","我的共享车位","我的充电桩","设置"]
+    let personList  = ["我的车辆","我的钱包","长租车位","我的共享车位","我的充电桩","设置"]
     //定义列表前的图片地址
-    let imgArray  = ["tcdd","wdcl","wdqb","czcw","wdgxcw","fjcdz","xtsz"]
+    let imgArray  = ["wdcl","wdqb","czcw","wdgxcw","fjcdz","xtsz"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,10 +29,9 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.cellLayoutMarginsFollowReadableWidth = false
- 
         //已登录
         if  UserDefaults.standard.string(forKey: "personId") != nil {
-           userLogin.setTitle("已登录", for: .normal)
+           userLogin.setTitle(UserDefaults.standard.string(forKey: "personName"), for: .normal)
             userLogin.isEnabled = false
         }
                //未登录
@@ -46,22 +45,25 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
     //显示多少行
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 7
+        return 6
     }
  
     //重写显示方法，如果下拉列表发生了变化，会再次调用此方法
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "todoCell") as! UITableViewCell
-        cell.accessoryType = UITableViewCellAccessoryType.none
-     
-        //设置label前的图片
-        var img = cell.viewWithTag(104) as! UIImageView
-        img.image = UIImage(named:imgArray[indexPath.row])!
-        //获取label
-        let label = cell.viewWithTag(105) as! UILabel
-        label.text = personList[indexPath.row]
-        return cell
+//        cell.accessoryType = UITableViewCellAccessoryType.none
+       
+       
+            //设置label前的图片
+            var img = cell.viewWithTag(104) as! UIImageView
+            img.image = UIImage(named:imgArray[indexPath.row])!
+            //获取label
+            let label = cell.viewWithTag(105) as! UILabel
+            label.text = personList[indexPath.row]
+            return cell
+   
+  
     }
 
     
@@ -70,18 +72,56 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //点击某行cell后颜色不变色
         self.tableView!.deselectRow(at: indexPath, animated: true)
+        
         //检测登录
-//        if  UserDefaults.standard.string(forKey: "personId") == nil{
-//            //请先登录
-//            return
-//        }
-//        var x = WXApiManager()
-//
-//        x.payAlertController(self, total_fee: 0.01, body: "天津停车", payCode: "1", paySuccess: {
-//            print("支付失败")
-//        })
-    
-  
+        if  UserDefaults.standard.string(forKey: "personId") == nil{
+            //请先登录
+            let alert=UIAlertController(title: "提示",message: "请先登录。",preferredStyle: .alert )
+            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        
+            return
+        }
+      
+       //我的车辆
+        else if indexPath.row == 0{
+            self.performSegue(withIdentifier: "carIdentifier", sender: self)
+        }
+            //我的钱包
+        else if indexPath.row == 1{
+            let alert=UIAlertController(title: "提示",message: "此功能暂未开放。",preferredStyle: .alert )
+            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+            //长租车位
+        else if indexPath.row == 2{
+            self.performSegue(withIdentifier: "shareReleaseIdentifier", sender: self)
+
+        }
+            //我的共享车位
+        else if indexPath.row == 3{
+        self.performSegue(withIdentifier: "myShareIdentifier", sender: self)
+        }
+            //我的充电桩
+        else if indexPath.row == 4{
+            let alert=UIAlertController(title: "提示",message: "此功能暂未开放。",preferredStyle: .alert )
+            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+            //设置
+        else if indexPath.row == 5{
+            let alert=UIAlertController(title: "提示",message: "此功能暂未开放。",preferredStyle: .alert )
+            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
+            
+        }
     }
   
    
@@ -262,6 +302,7 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 if let jsonData = str.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false) {
                     let json = try JSON(data: jsonData)
                     UserDefaults.standard.set(json["result"].string!, forKey: "personId")
+                    UserDefaults.standard.set(nameInput, forKey: "personName")
                     UserDefaults.standard.synchronize()
                 }
                 return "true"

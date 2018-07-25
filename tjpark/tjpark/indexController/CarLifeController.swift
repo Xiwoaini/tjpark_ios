@@ -13,7 +13,7 @@ import UIKit
  */
 class CarLifeController: UIViewController {
   
-   
+
        
   //视图加载
     override func viewDidLoad() {
@@ -228,8 +228,12 @@ class CarLifeController: UIViewController {
     @IBAction func close(segue : UIStoryboardSegue){
       
     }
+    //返回按钮
    
-  
+    @IBAction func btnClose(_ sender: Any) {
+          self.dismiss(animated:true, completion:nil)
+    }
+    
     
 
     

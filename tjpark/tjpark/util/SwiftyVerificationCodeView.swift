@@ -5,10 +5,8 @@
 //  Created by lip on 17/4/6.
 //  Copyright © 2017年 lip. All rights reserved.
 //
-
 import UIKit
 /**
-
  不允许用户点击，顺序已经定死，可以用删除键回退，最后一个输完自动登陆
  */
 
@@ -22,7 +20,7 @@ class SwiftyVerificationCodeView: UIView {
     
     /// 一堆框框的数组
     var textfieldarray = [UITextField]()
-
+    
     /// 框框之间的间隔
     let margin:CGFloat = 10
     
@@ -31,7 +29,7 @@ class SwiftyVerificationCodeView: UIView {
     
     /// 框框个数
     var numOfRect = 7
-
+    
     /// 构造函数
     ///
     /// - Parameters:
@@ -43,13 +41,13 @@ class SwiftyVerificationCodeView: UIView {
         setupUI()
     }
     
-   
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func cleanVerificationCodeView(){
-     
+        
         for tv in textfieldarray {
             tv.text = ""
         }
@@ -67,7 +65,7 @@ extension SwiftyVerificationCodeView{
         
         // 不允许用户直接操作验证码框
         self.isUserInteractionEnabled = false
-     
+        
         // 计算左间距
         let leftmargin = (UIScreen.main.bounds.width - width * CGFloat(numOfRect) - CGFloat(numOfRect - 1) * margin) / 2
         
@@ -111,11 +109,12 @@ extension SwiftyVerificationCodeView{
 
 extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDelegate{
     
-   
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if (textField.text?.isEmpty)! {
-            
+//            SwiftyTextFieldDeleteDelegate
+                
             // tag 对应数组下标
             let index = textField.tag
             
@@ -136,7 +135,7 @@ extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDe
             
         }
         return false
-
+        
     }
     
     /// 监听键盘删除键
