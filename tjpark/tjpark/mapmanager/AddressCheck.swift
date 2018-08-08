@@ -211,6 +211,7 @@ class AddressCheck: UIViewController,UITableViewDataSource,UITableViewDelegate,U
     @IBAction func closeBtn(_ sender: UIButton) {
         self.dismiss(animated:true, completion:nil)
     }
+   
     //地址转坐标
     func conversionsAddress(address:String){
         let strUrl =  String(format:"http://api.map.baidu.com/geocoder/v2/?address=%@&output=json&ak=%@&mcode=com.tjsinfo.lock",address.urlEncoded(),"PiQVscwPkLwRN1V6ZDa0kzUKbi9FG2Q9")
@@ -223,12 +224,13 @@ class AddressCheck: UIViewController,UITableViewDataSource,UITableViewDelegate,U
                 //成功返回经纬度的情况
                 let tmp = json["status"].int
                 if tmp == 0 {
-                    IndexController.lon = json["result"]["location"]["lng"].double!
-                    IndexController.lat = json["result"]["location"]["lat"].double!
-                    TestController.isFirst = true
-                      TabBarController.selectValue = 1
-                   self.performSegue(withIdentifier: "resultAddressIdentifier", sender: self)
+                    MapController.currentLon = json["result"]["location"]["lng"].double!
+                    MapController.currentLat = json["result"]["location"]["lat"].double!
                   
+                    TestController.isFirst = true
+                    TabBarController.selectValue = 1
+                    self.performSegue(withIdentifier: "resultAddressIdentifier", sender: self)
+                 
                 }
                     //地址没有找到情况
                 else if tmp == 1 {
@@ -255,10 +257,9 @@ class AddressCheck: UIViewController,UITableViewDataSource,UITableViewDelegate,U
             
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-    }
+ 
+  
+  
     
 }
 

@@ -9,15 +9,25 @@
 import UIKit
 import SwiftyJSON
 
-class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate {
+ 
+
+class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate,SwiftyVerificationCodeViewDelegate {
+    
+    var showlabel = UILabel()
+    var label3 : UILabel?
     //登录按钮
     @IBOutlet weak var userLogin: UIButton!
     //定义需要显示的下拉列表
     let personList  = ["我的车辆","我的钱包","长租车位","我的共享车位","我的充电桩","设置"]
     //定义列表前的图片地址
     let imgArray  = ["wdcl","wdqb","czcw","wdgxcw","fjcdz","xtsz"]
+    // 验证码视图
+          var view1 = UIView()
     
     @IBOutlet weak var tableView: UITableView!
+    var isHiddenView1 = false
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +47,7 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
                //未登录
         else{
             userLogin.setTitle("立即登录", for: .normal)
-            
+ 
         }
         //监听事件
            userLogin.addTarget(self, action: #selector(loginBtn), for: .touchUpInside)
@@ -53,7 +63,7 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "todoCell") as! UITableViewCell
 //        cell.accessoryType = UITableViewCellAccessoryType.none
-       
+        self.tableView.rowHeight = 60
        
             //设置label前的图片
             var img = cell.viewWithTag(104) as! UIImageView
@@ -180,12 +190,15 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
     //登录事件
     @objc func loginBtn(btn:UIButton) {
         if (btn.titleLabel?.text?.elementsEqual("立即登录"))!{
+            
+            
                     let alertController = UIAlertController(title: "登录", message: "", preferredStyle: UIAlertControllerStyle.alert);
                     alertController.addTextField { (textField:UITextField!) -> Void in
                         textField.keyboardType = UIKeyboardType.namePhonePad
                         textField.placeholder = "请输入手机号";
+                        textField.keyboardType = UIKeyboardType.numberPad
                     }
-            
+                    let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
                     let okAction = UIAlertAction(title: "下一步", style: UIAlertActionStyle.default) { (ACTION) -> Void in
             
                         let peoplePhone = alertController.textFields!.last! as UITextField
@@ -207,39 +220,68 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
                         }
                             //输入正确的手机号情况下
                         else{
-                            //发送短信验证码
-                            var a = self.sendIdentityCode(mobile:peoplePhone.text!)
-                            let alertController1 = UIAlertController(title: "验证码", message: "", preferredStyle: UIAlertControllerStyle.alert);
-                            alertController1.addTextField { (textField:UITextField!) -> Void in
-                                textField.keyboardType = UIKeyboardType.numberPad
-                                textField.placeholder = "请输入验证码";
-                                let okAction = UIAlertAction(title: "登录", style: UIAlertActionStyle.default) { (ACTION) -> Void in
-                                    let identityCode = alertController1.textFields!.last! as UITextField
-                                    //调用不受理方法
-                                    if  identityCode.text == nil || identityCode.text == "" {
-                                        self.present(alertController1, animated: true, completion: nil)
-                                        return
-                                    }
-                                        //验证码输入错误
-                                    else if self.mobileCode != identityCode.text{
-                                        self.present(alertController1, animated: true, completion: nil)
-                                    }
-                                    else{
-                                self.saveUser(password:"111111",nameInput:peoplePhone.text!,registrationId:"1" )
-                                self.loginUrl(nameInput:peoplePhone.text!,password: "111111")
-                                        TestController.isFirst = true
-                                        self.performSegue(withIdentifier: "loginSuccess", sender: self)
-                                    }
-                                    //验证码输入正确进行刷新
-
-                                }
-                                alertController1.addAction(okAction);
-                                self.present(alertController1, animated: true, completion: nil)
+                            
+                            //初始化弹出视图
+                            self.view1 = UIView(frame: CGRect(x:(self.view.frame.width-270)/2, y:self.view.frame.height*0.3, width:270, height:self.view.frame.height*0.33))
+                            self.view1.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 255)
+                            var label1 = UILabel(frame: CGRect(x:85, y:self.view1.frame.height*0.05, width:100, height:self.view1.frame.height*0.15))
+                            label1.font = UIFont(name: "Helvetica", size: 17)!
+                            label1.text = "输入验证码"
+                            label1.textAlignment = .center
+                            self.view1.addSubview(label1)
+                            
+                            var button1 = UIButton(frame: CGRect(x:85, y:self.view1.frame.height*0.25, width:90, height:self.view1.frame.height*0.15))
+                            button1.countDown(count: 60)
+                            button1.addTarget(self, action: #selector(self.sendCode), for: .touchUpInside)
+                            button1.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+                            self.view1.addSubview(button1)
+                            
+                            var button2 = UIButton(frame: CGRect(x:215, y:self.view1.frame.height*0.05, width:50, height:self.view1.frame.height*0.15))
+                            button2.setTitle("关闭", for: .normal)
+                            button2.setTitleColor(UIColor.gray, for: .normal)
+                            button2.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+                            button2.addTarget(self, action: #selector(self.exitCode), for: .touchUpInside)
+                            self.view1.addSubview(button2)
+                            
+                            let v = SwiftyVerificationCodeView(frame: CGRect(x: 0, y: self.view1.frame.height*0.45, width: self.view.frame.width, height: 30))
+                            v.delegate = self
+                            self.view.backgroundColor = UIColor.white
+                            
+                            self.view1.addSubview(v)
+                            
+                            var label2 = UITextView(frame: CGRect(x:0, y:self.view1.frame.height*0.45+50, width:self.view1.frame.width, height:self.view1.frame.height*0.30))
+                            label2.font = UIFont(name: "Helvetica", size: 10)!
+                            label2.isEditable = false
+                            label2.isScrollEnabled = false
+                            label2.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 255)
+                            label2.text = "输入验证码即代表同意《天津停车用户注册协议》和《天津停车隐私协议》"
+                            label2.textAlignment = .center
+                            self.view1.addSubview(label2)
+                            
+                            self.label3 = UILabel(frame: CGRect(x:255, y:self.view1.frame.height*0.46, width:15, height:20))
+                            self.label3?.font = UIFont(name: "Helvetica", size: 13)!
+                            self.label3?.text = "X"
+                            self.label3?.textAlignment = .left
+                            self.label3?.textColor = UIColor.red
+                            self.label3?.isHidden = true
+                            self.view1.addSubview(self.label3!)
+                            
+                            self.nameInput = peoplePhone.text!
+                            self.sendIdentityCode(mobile:self.nameInput!)
+                            if self.isHiddenView1 {
+                                self.view1.isHidden = false
                             }
+                            else{
+                                  self.isHiddenView1 = true
+                               self.view.addSubview(self.view1)
+                            }
+
+                            self.userLogin.isEnabled = false
                         }
             
                     }
                     alertController.addAction(okAction);
+                    alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
        
         }
@@ -318,7 +360,87 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate 
         
     }
     
+      // 登陆逻辑
+    func verificationCodeDidFinishedInput(verificationCodeView: SwiftyVerificationCodeView, code: String) {
+     
+        showlabel.text = code
+           //验证码输入错误s
+        if code != mobileCode! {
+            label3?.isHidden = false
+            verificationCodeView.cleanVerificationCodeView()
+        }
+            //验证码输入正确
+        else{
+              label3?.isHidden = true
+            self.saveUser(password:"111111",nameInput:nameInput!,registrationId:"1" )
+            self.loginUrl(nameInput:nameInput!,password: "111111")
+            TestController.isFirst = true
+            self.performSegue(withIdentifier: "loginSuccess", sender: self)
+        }
+    }
+      @objc func sendCode(btn:UIButton) {
+        self.sendIdentityCode(mobile:nameInput!)
+        btn.countDown(count: 60)
+    }
+    @objc func exitCode(btn:UIButton) {
+          self.userLogin.isEnabled = true
+        view1.isHidden = true
+        self.view.willRemoveSubview(view1)
+        
+    }
+  
+    
 }
+
+//button计时器
+extension UIButton{
+    
+    public func countDown(count: Int){
+        // 倒计时开始,禁止点击事件
+        isEnabled = false
+        
+        // 保存当前的背景颜色
+        var defaultColor = self.backgroundColor
+        // 设置倒计时,按钮背景颜色
+        backgroundColor = UIColor.gray
+        
+        var remainingCount: Int = count {
+            willSet {
+                setTitle("\(newValue)s后重发", for: .normal)
+                
+                if newValue <= 0 {
+                    defaultColor = UIColor(red: 25/255, green: 158/255, blue: 216/255, alpha: 255)
+                    setTitle("发送验证码", for: .normal)
+                }
+            }
+        }
+        
+        // 在global线程里创建一个时间源
+        let codeTimer = DispatchSource.makeTimerSource(queue:DispatchQueue.global())
+        // 设定这个时间源是每秒循环一次，立即开始
+        codeTimer.scheduleRepeating(deadline: .now(), interval: .seconds(1))
+        // 设定时间源的触发事件
+        codeTimer.setEventHandler(handler: {
+            
+            // 返回主线程处理一些事件，更新UI等等
+            DispatchQueue.main.async {
+                // 每秒计时一次
+                remainingCount -= 1
+                // 时间到了取消时间源
+                if remainingCount <= 0 {
+                    self.backgroundColor = defaultColor
+                    
+                    self.isEnabled = true
+                    codeTimer.cancel()
+                }
+            }
+        })
+        // 启动时间源
+        codeTimer.resume()
+    }
+    
+}
+
 
 
  

@@ -25,10 +25,10 @@ class SwiftyVerificationCodeView: UIView {
     let margin:CGFloat = 10
     
     /// 框框的大小
-    let width:CGFloat = 50
+    let width:CGFloat = 30
     
     /// 框框个数
-    var numOfRect = 7
+    var numOfRect = 6
     
     /// 构造函数
     ///
@@ -36,7 +36,7 @@ class SwiftyVerificationCodeView: UIView {
     ///   - frame: frame，宽度最好设置为屏幕宽度
     ///   - num: 框框个数，默认 4 个
     ///   - margin: 框框之间的间距，默认 10
-    init(frame: CGRect,num:Int = 4,margin:CGFloat = 10) {
+    init(frame: CGRect,num:Int = 6,margin:CGFloat = 10) {
         super.init(frame: frame)
         setupUI()
     }
@@ -67,7 +67,7 @@ extension SwiftyVerificationCodeView{
         self.isUserInteractionEnabled = false
         
         // 计算左间距
-        let leftmargin = (UIScreen.main.bounds.width - width * CGFloat(numOfRect) - CGFloat(numOfRect - 1) * margin) / 2
+        let leftmargin = CGFloat(20.0)
         
         // 创建 n个 UITextFiedl
         for i in 0..<numOfRect{
@@ -92,13 +92,13 @@ extension SwiftyVerificationCodeView{
         
         let tv = SwiftyTextField(frame: frame)
         tv.borderStyle = .line
+        tv.keyboardType = UIKeyboardType.numberPad
         tv.textAlignment = .center
-        tv.font = UIFont.boldSystemFont(ofSize: 40)
+        tv.font = UIFont.boldSystemFont(ofSize: 25)
         tv.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         tv.delegate = self
         tv.deleteDelegate = self
         addSubview(tv)
-        tv.keyboardType = .default
         return tv
         
     }

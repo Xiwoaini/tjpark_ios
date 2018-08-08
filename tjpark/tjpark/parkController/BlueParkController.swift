@@ -14,8 +14,8 @@ class BlueParkController: UIViewController,UITableViewDataSource,UITableViewDele
     var park = Park()
     var parkDetail = ParkDetail()
     @IBOutlet weak var parkName: UILabel!
-    @IBOutlet weak var distance: UILabel!
-    @IBOutlet weak var parkType: UILabel!
+    
+   
     @IBOutlet weak var parkAddress: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeTotal: UILabel!
@@ -32,13 +32,48 @@ class BlueParkController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.cellLayoutMarginsFollowReadableWidth = false
-        
-        
         parkName.text = park.place_name
-        distance.text = "距离:" + park.distance
-        parkType.text = "类型:" + park.lable
-        parkAddress.text = "地址: " + park.place_address
-        placeTotal.text = park.space_num + "/" + park.place_total_num
+//        parkType.text = "类型:" + park.lable
+        parkAddress.text = "地址: " + park.place_address + park.distance
+        placeTotal.text = "剩余车位：" + park.space_num
+        //类型图片,最多5种
+        var currentWidth = self.view.frame.width*0.05
+        if park.lable.contains("地上"){
+            let imageView = UIImageView(image:UIImage(named:"ditc"))
+            imageView.frame = CGRect(x:currentWidth, y:110, width:self.view.frame.width*0.15, height:28)
+            self.view.addSubview(imageView)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("预约"){
+            let imageView2 = UIImageView(image:UIImage(named:"yytc"))
+            imageView2.frame = CGRect(x:currentWidth, y:110, width:self.view.frame.width*0.15, height:28)
+            self.view.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("充电"){
+            
+            let imageView2 = UIImageView(image:UIImage(named:"ccz"))
+            imageView2.frame = CGRect(x:currentWidth, y:110, width:self.view.frame.width*0.15, height:28)
+            self.view.addSubview(imageView2)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+        }
+        if park.lable.contains("共享"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:110, width:self.view.frame.width*0.15, height:28)
+            self.view.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+            
+        }
+        if park.lable.contains("在线支付"){
+            let imageView3 = UIImageView(image:UIImage(named:"zntc"))
+            imageView3.frame = CGRect(x:currentWidth, y:110, width:self.view.frame.width*0.15, height:28)
+            self.view.addSubview(imageView3)
+            currentWidth = currentWidth + self.view.frame.width*0.2
+            
+        }
+        
+        
+        
     }
 
     //预约按钮

@@ -21,7 +21,8 @@ class PersonController:UIViewController,UITableViewDataSource,UITableViewDelegat
     let personList  = ["我的车辆","我的共享车位","共享车位发布","我的月卡","我的优惠券","功能说明","用前必读"]
     //定义列表前的图片地址
      let imgArray  = ["mycar","myShareCar","releasecar","myYueKa","myJiFen","myYouHui","myTicket"]
-
+    //验证码视图
+      var view1 = UIView()
     @IBOutlet weak var loginStatus: UILabel!
     @IBOutlet weak var personView: UIView!
     @IBOutlet weak var loginOrLgout: UIButton!
@@ -38,6 +39,12 @@ class PersonController:UIViewController,UITableViewDataSource,UITableViewDelegat
         }
         else{
             lab.text = "暂未登录"
+            //初始化子视图
+            view1 = UIView(frame: CGRect(x:self.view.frame.width*0.2, y:self.view.frame.height*0.33, width:self.view.frame.width*0.6, height:self.view.frame.height*0.33))
+            view1.backgroundColor = UIColor.blue
+            //添加点击事件
+            view1.isUserInteractionEnabled = true
+            
            
         }
         //遵循协议
@@ -143,45 +150,8 @@ class PersonController:UIViewController,UITableViewDataSource,UITableViewDelegat
                 }
                     //输入正确的手机号情况下
                 else{
-                    //发送短信验证码
-                    var a = self.sendIdentityCode(mobile:peoplePhone.text!)
-                    let alertController1 = UIAlertController(title: "验证码", message: "", preferredStyle: UIAlertControllerStyle.alert);
-                    alertController1.addTextField { (textField:UITextField!) -> Void in
-                        textField.keyboardType = UIKeyboardType.numberPad
-                        textField.placeholder = "请输入验证码";
-                        let okAction = UIAlertAction(title: "登录", style: UIAlertActionStyle.default) { (ACTION) -> Void in
-                            let identityCode = alertController1.textFields!.last! as UITextField
-                            //调用不受理方法
-                            if  identityCode.text == nil || identityCode.text == "" {
-                                self.present(alertController1, animated: true, completion: nil)
-                                return
-                            }
-                                //验证码输入错误
-                            else if self.mobileCode != identityCode.text{
-                                self.present(alertController1, animated: true, completion: nil)
-                            }
-                            else{
-                                self.saveUser(password:"111111",nameInput:peoplePhone.text!,registrationId:"1" )
-                                self.loginUrl(nameInput:peoplePhone.text!,password: "111111")
-//
-                                let alertController1 = UIAlertController(title: "系统提示",
-                                message: "由于程序处于非运营阶段，稍后请您务必查看'用前必读'一栏。同时建议您观看'功能说明'一栏,以此来查看各类型停车场的功能。", preferredStyle: .alert)
-                               
-                                let okAction1 = UIAlertAction(title: "好的", style: .default, handler: {
-                                    action in
-                                    self.viewDidLoad()
-                                    self.tabBarController?.selectedIndex = 3
-                                })
-                                alertController1.addAction(okAction1)
-                                self.present(alertController1, animated: true, completion: nil)
-                               
-                            }
-                            //验证码输入正确进行刷新
-                            
-                        }
-                        alertController1.addAction(okAction);
-                        self.present(alertController1, animated: true, completion: nil)
-                    }
+                    self.view.addSubview(self.view1)
+                 
                 }
                 
             }
@@ -203,7 +173,7 @@ class PersonController:UIViewController,UITableViewDataSource,UITableViewDelegat
 
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "todoCell") as! UITableViewCell
         cell.accessoryType = UITableViewCellAccessoryType.none
-        self.tableView.rowHeight = 45
+        self.tableView.rowHeight = 60
 
         //设置label前的图片
         var img = cell.viewWithTag(104) as! UIImageView
@@ -402,5 +372,7 @@ class PersonController:UIViewController,UITableViewDataSource,UITableViewDelegat
         
     }
 }
+
+ 
 
 

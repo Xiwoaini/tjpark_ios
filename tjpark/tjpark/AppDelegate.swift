@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
         AliSdkManager.sharedManager()
         //启动时候，调用远程并获取大量数据
 //        MapController().getParkList();
+//        Thread.sleep(forTimeInterval: 3.0)//延长3秒
         return true
     }
     

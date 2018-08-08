@@ -161,7 +161,7 @@ class CarEditController: UIViewController,UITextFieldDelegate {
     
     //更新车牌，点击编辑按钮的时候
     func updatePlate(customerid:String,plateNumber:String,plateid:String)-> Bool{
-        if plateNumber.characters.count != 7   {
+        if plateNumber.characters.count != 7 || plateNumber.characters.count != 8   {
             return false
         }
         do {
