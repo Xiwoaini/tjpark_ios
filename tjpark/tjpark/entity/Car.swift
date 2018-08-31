@@ -13,5 +13,5 @@ class Car  {
     var created_time :String = ""
     var park_id :String = ""
     var status : String = ""
-
+ var  if_certify : String = ""
 }

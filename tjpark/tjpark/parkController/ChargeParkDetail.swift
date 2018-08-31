@@ -34,6 +34,7 @@ class ChargeParkDetail: UIViewController,UITableViewDataSource,UITableViewDelega
     //重写显示方法，如果下拉列表发生了变化，会再次调用此方法
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
          let cell = self.tableView.dequeueReusableCell(withIdentifier: "todoCell") as! UITableViewCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
              self.tableView.rowHeight = 250
             //充电桩号
             let label1 = cell.viewWithTag(1) as! UILabel

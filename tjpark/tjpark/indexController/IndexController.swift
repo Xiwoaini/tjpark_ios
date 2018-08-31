@@ -575,26 +575,7 @@ class IndexController:  UIViewController,BMKMapViewDelegate,CLLocationManagerDel
         return true
     }
     
-    //在这个方法中给新页面传递参数
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "yellowIdentifier"{
-            
-            let controller = segue.destination as! YellowParkController
-            controller.park = sender as! Park
-        }
-        else if segue.identifier == "blueIdentifier"{
-            
-            let controller = segue.destination as! BlueParkController
-            controller.park = sender as! Park
-        }
-        else  if segue.identifier == "greenIdentifier"{
-            let controller = segue.destination as! GreenParkController
-            controller.park = sender as! Park
-        }
-        else{
-            return
-        }
-    }
+    
     
 //    //地址转坐标
     func conversionsAdd(address:String){

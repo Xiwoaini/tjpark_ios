@@ -11,11 +11,11 @@
 import UIKit
 class TabBarController: UITabBarController{
     //服务器接口地址
-       static var  windowIp =  "http://60.29.41.58:3000"
+//       static var  windowIp =  "http://60.29.41.58:3000"
     //王重阳
 //     static var  windowIp = "http://192.168.10.153:8080"
     //自己
-//    static var  windowIp = "http://192.168.168.54:8080"
+    static var  windowIp = "http://192.168.168.61:8080"
 //    本地
 //     static var  windowIp = "http://192.168.168.221:8080"
     
@@ -37,8 +37,8 @@ class TabBarController: UITabBarController{
     
     override func viewWillLayoutSubviews() {
         var oriTabBarFrame = tabbarItem.frame
-        oriTabBarFrame.origin.y -= 3
-        oriTabBarFrame.size.height += 8
+        oriTabBarFrame.origin.y -= 5
+        oriTabBarFrame.size.height += 10
         tabBar.frame = oriTabBarFrame
         
     }

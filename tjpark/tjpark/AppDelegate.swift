@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKGeneralDelegate{
             entiity.types = Int(UNAuthorizationOptions.alert.rawValue |
                 UNAuthorizationOptions.badge.rawValue |
                 UNAuthorizationOptions.sound.rawValue)
-        }else  if #available(iOS 10.0, *){
+        }else if #available(iOS 10.0, *){
             let entiity = JPUSHRegisterEntity()
             entiity.types = Int(UNAuthorizationOptions.alert.rawValue |
                 UNAuthorizationOptions.badge.rawValue |

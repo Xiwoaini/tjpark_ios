@@ -14,7 +14,7 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
     
     @IBOutlet weak var tableView: UITableView!
     
-    
+    var plateID = ""
     
      var carList :[Car] = []
     
@@ -62,15 +62,22 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
         
         //获取button状态
         let button = cell.viewWithTag(88) as! UIButton
-        if carList[indexPath.row].status.elementsEqual("完成认证"){
+        if carList[indexPath.row].if_certify.elementsEqual("完成认证"){
             button.isEnabled = false
             button.backgroundColor = UIColor.white
             button.setTitleColor(UIColor.blue, for: .normal)
-            button.setTitle(carList[indexPath.row].status, for: .normal)
+            button.setTitle(carList[indexPath.row].if_certify, for: .normal)
+        }
+        else  if carList[indexPath.row].if_certify.elementsEqual("暂未审核"){
+            button.isEnabled = false
+            button.backgroundColor = UIColor.white
+            button.setTitleColor(UIColor.blue, for: .normal)
+            button.setTitle(carList[indexPath.row].if_certify, for: .normal)
         }
         else{
           button.setTitle("立即认证", for: .normal)
           button.isEnabled = true
+            
         }
 
         return cell
@@ -90,6 +97,7 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
     
    //添加车牌
     @IBAction func addPlate(_ sender: UIButton) {
+        
          var car = Car()
         self.performSegue(withIdentifier: "updateIdentifier", sender: car
         )
@@ -109,6 +117,7 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
     
 
     func getCarList(customerid:String) -> Array<Car>{
+        carList.removeAll()
         do {
             var strUrl =  String(format:TabBarController.windowIp + "/tjpark/app/AppWebservice/findPlate?customerid=%@",customerid)
             let url = URL(string: strUrl)
@@ -123,6 +132,7 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
                     car.created_time = json[Int(index)!]["created_time"].stringValue
                     car.customer_id = json[Int(index)!]["customer_id"].stringValue
                     car.park_id = json[Int(index)!]["park_id"].stringValue
+                    car.if_certify = json[Int(index)!]["if_certify"].stringValue
                     carList.append(car)
                 }
             }
@@ -147,6 +157,10 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
     
     //调用相机或相册
     @IBAction func renZhengBtn(_ sender: UIButton) {
+        let btn = sender as! UIButton
+        let cell = btn.superView(of: UITableViewCell.self)!
+        let indexPath = self.tableView.indexPath(for: cell)
+        plateID=carList[(indexPath?.row)!].id
         //创建菜单
         var optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -247,6 +261,7 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
     //图片上传服务器
     //上传图片到服务器
     func uploadImage(imageData : String){
+       
   
         if UserDefaults.standard.string(forKey: "personId") == nil{
             let alert=UIAlertController(title: "提示",message: "请先登录。",preferredStyle: .alert )
@@ -255,8 +270,9 @@ class MyCarController: UIViewController,UITableViewDataSource,UITableViewDelegat
             self.present(alert, animated: true, completion: nil)
             return
         }
-        var personId = UserDefaults.standard.string(forKey: "personId")
-        Alamofire.request(TabBarController.windowIp + "/tjpark/app/UploadWebService/imgVerification", method: .post, parameters: ["imgStr": imageData,"customerId":personId]).responseJSON { (response) in
+        
+        let personId = UserDefaults.standard.string(forKey: "personId")
+        Alamofire.request(TabBarController.windowIp + "/tjpark/app/UploadWebService/imgVerification", method: .post, parameters: ["imgStr": imageData,"plateId":plateID]).responseJSON { (response) in
             switch response.result {
             case .success:
                 //上传成功 todo 正在认证状态，刷新列表

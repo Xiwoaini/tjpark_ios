@@ -18,7 +18,7 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //登录按钮
     @IBOutlet weak var userLogin: UIButton!
     //定义需要显示的下拉列表
-    let personList  = ["我的车辆","我的钱包","长租车位","我的共享车位","我的充电桩","设置"]
+    let personList  = ["我的车辆","我的钱包","长租车位","我的共享车位","我的充电桩","退出账户"]
     //定义列表前的图片地址
     let imgArray  = ["wdcl","wdqb","czcw","wdgxcw","fjcdz","xtsz"]
     // 验证码视图
@@ -123,12 +123,23 @@ class MyInformation: UIViewController,UITableViewDataSource,UITableViewDelegate,
             self.present(alert, animated: true, completion: nil)
             return
         }
-            //设置
+            //退出账户
         else if indexPath.row == 5{
-            let alert=UIAlertController(title: "提示",message: "此功能暂未开放。",preferredStyle: .alert )
-            let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "系统提示",
+                                                    message: "您确定要执行此操作吗?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "取消操作", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "确定", style: .default, handler: {
+                action in
+                
+                //删除个人信息
+                UserDefaults.standard.removeObject(forKey: "personId")
+                     self.userLogin.isEnabled = true
+                self.viewDidLoad()
+                
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
             return
             
         }

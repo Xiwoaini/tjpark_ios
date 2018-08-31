@@ -52,7 +52,6 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.cellLayoutMarginsFollowReadableWidth = false
-        
         play()
        
     }
@@ -75,8 +74,6 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
                 }
             }
         })
-
-        
         //加载更多
         self.tableView.refreshFooter = LCRefreshFooter.init(refreshBlock: {
             //定义当前展示数组长度
@@ -162,7 +159,7 @@ class OrderListController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "orderListCell") as! UITableViewCell
         self.tableView.sectionHeaderHeight = 40
         self.tableView.sectionFooterHeight = 40
-        self.tableView.rowHeight = 150
+        self.tableView.rowHeight = 160
         //时间
         let label1 = cell.viewWithTag(1) as! UILabel
         label1.text = "   " + orderListShow[indexPath.row].in_time

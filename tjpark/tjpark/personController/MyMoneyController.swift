@@ -29,6 +29,7 @@ class MyMoneyController: UIViewController {
         
         getMyShare(shareid:id)
     }
+   
     
     
     //    调用接口查询

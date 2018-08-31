@@ -51,9 +51,9 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
         var scroWidth = self.view.frame.width
         scrollView.frame = CGRect(x:0,y:65,width:self.view.frame.width,height:self.view.frame.height-115)
         scrollView.contentSize.width = self.view.frame.width
-        scrollView.contentSize.height = 420+viewHeight
+        scrollView.contentSize.height = 430+viewHeight
         scrollView.autoresizingMask = UIViewAutoresizing.flexibleHeight
-        if (self.view.frame.height-115) > 420+viewHeight{
+        if (self.view.frame.height-115) > 430+viewHeight{
             scrollView.isScrollEnabled = false
         }
         else{
@@ -139,9 +139,9 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
         //设置按钮位置和大小
         button4.frame = CGRect(x:(pWidth*3)+(pWidth-60)/2, y:1+viewHeight, width:60, height:60)
         //设置按钮文字
-        button4.setBackgroundImage(UIImage(named:"gdtb"), for: .normal)
-        button4.tag = 8
-         button4.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
+        button4.setBackgroundImage(UIImage(named:"sycdz"), for: .normal)
+        button4.tag = 4
+        button4.addTarget(self, action: #selector(selectNearPark), for: .touchUpInside)
         scrollView.addSubview(button4)
         
         let gd:UILabel =  UILabel(frame:CGRect(x:(pWidth*3)+(pWidth-60)/2, y:40+viewHeight, width:60, height:60))
@@ -182,66 +182,152 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
         let label6:UILabel =  UILabel(frame:CGRect(x:0, y:205+viewHeight, width:self.view.frame.width, height:7))
         label6.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
         scrollView.addSubview(label6)
-        //充电桩
-        let imageView6 = UIImageView(image:UIImage(named:"csh_cdz"))
-        imageView6.frame = CGRect(x:self.view.frame.width*0.03, y:215+viewHeight, width:self.view.frame.width*0.2, height:20)
+        //车生活
+        let imageView6 = UIImageView(image:UIImage(named:"ico20"))
+        imageView6.frame = CGRect(x:self.view.frame.width*0.03, y:215+viewHeight, width:20, height:20)
         scrollView.addSubview(imageView6)
+        let csh:UILabel =  UILabel(frame:CGRect(x:self.view.frame.width*0.03+30, y:215+viewHeight, width:60, height:20))
+        csh.font =  UIFont.systemFont(ofSize: 13)
+        csh.text = "车生活"
+        csh.textAlignment = .left
+        scrollView.addSubview(csh)
         //横线
         let label8:UILabel =  UILabel(frame:CGRect(x:10, y:240+viewHeight, width:self.view.frame.width - 20, height:2))
         label8.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
         scrollView.addSubview(label8)
-          //左侧
-        //        电站搜索
-        let imageView1 = UIImageView(image:UIImage(named:"csh_dzss"))
-        imageView1.frame = CGRect(x:self.view.frame.width*0.05, y:250+viewHeight, width:self.view.frame.width*0.4, height:54)
-            imageView1.isUserInteractionEnabled = true
-            imageView1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
-        scrollView.addSubview(imageView1)
-//        //竖线
-        let label17:UILabel =  UILabel(frame:CGRect(x:self.view.frame.width/2-0.75, y:250+viewHeight, width:1, height:60))
-        label17.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
-        scrollView.addSubview(label17)
-          //右侧
-        // 充电地图
-        let imageView3 = UIImageView(image:UIImage(named:"csh_cddt"))
-        imageView3.frame = CGRect(x:self.view.frame.width*0.55, y:250+viewHeight, width:self.view.frame.width*0.4, height:54)
-            imageView3.isUserInteractionEnabled = true
-            imageView3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
-        scrollView.addSubview(imageView3)
-        //        横线
-        let label11:UILabel =  UILabel(frame:CGRect(x:10, y:305+viewHeight, width:self.view.frame.width-20, height:2))
-        label11.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
-        scrollView.addSubview(label11)
-        //        车生活
-        let imageView5 = UIImageView(image:UIImage(named:"i_csh"))
-        imageView5.frame = CGRect(x:self.view.frame.width*0.03, y:310+viewHeight, width:self.view.frame.width*0.2, height:20)
-        scrollView.addSubview(imageView5)
-  //        横线
-        let label13:UILabel =  UILabel(frame:CGRect(x:10, y:335+viewHeight, width:self.view.frame.width-20, height:2))
-        label13.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
-        scrollView.addSubview(label13)
-        //竖线
-        let label18:UILabel =  UILabel(frame:CGRect(x:self.view.frame.width/2-0.75, y:340+viewHeight, width:1, height:60))
-        label18.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
-        scrollView.addSubview(label18)
-        //左侧
-        //洗车
-        let imageView2 = UIImageView(image:UIImage(named:"csh_xc"))
-        imageView2.frame = CGRect(x:self.view.frame.width*0.05, y:340+viewHeight, width:self.view.frame.width*0.4, height:54)
-            imageView2.isUserInteractionEnabled = true
-            imageView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
-        scrollView.addSubview(imageView2)
-        //右侧
-//        csh2  违章查询     csh  汽车金融    csh12 道路救援    csh7 安全代驾
-//        csh5  缴纳车险     csh9  二手车     csh10   保养     csh11 车辆报价
-        //超值车险button
-        let imageView4 = UIImageView(image:UIImage(named:"csh_czcx"))
-        imageView4.frame = CGRect(x:self.view.frame.width*0.55, y:340+viewHeight, width:self.view.frame.width*0.4, height:54)
-            imageView4.isUserInteractionEnabled = true
-            imageView4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchSelect)))
-        scrollView.addSubview(imageView4)
+        
+        //车生活第一个按钮
+        let button01:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button01.frame = CGRect(x:(pWidth-60)/2, y:245+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button01.setBackgroundImage(UIImage(named:"ico80-1"), for: .normal)
+        button01.tag = 100
+        button01.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button01)
+        
+        let csh1:UILabel =  UILabel(frame:CGRect(x:(pWidth-60)/2, y:280+viewHeight, width:60, height:60))
+        csh1.text = "违章查询"
+        csh1.textAlignment = .center
+        csh1.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(csh1)
+        
+        //车生活第二个按钮
+        let button02:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button02.frame = CGRect(x:pWidth+(pWidth-60)/2, y:245+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button02.setBackgroundImage(UIImage(named:"ico80-2"), for: .normal)
+         button02.tag = 101
+        button02.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button02)
+        
+        let qcjr:UILabel =  UILabel(frame:CGRect(x:pWidth+(pWidth-60)/2, y:280+viewHeight, width:60, height:60))
+        qcjr.text = "汽车金融"
+        qcjr.textAlignment = .center
+        qcjr.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(qcjr)
+        
+        //车生活第三个按钮
+        let button03:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button03.frame = CGRect(x:(pWidth*2)+(pWidth-60)/2, y:245+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button03.setBackgroundImage(UIImage(named:"ico80-3"), for: .normal)
+        button03.tag = 102
+        button03.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button03)
+        
+        let dljy:UILabel =  UILabel(frame:CGRect(x:(pWidth*2)+(pWidth-60)/2, y:280+viewHeight, width:60, height:60))
+        dljy.text = "道路救援"
+        dljy.textAlignment = .center
+        dljy.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(dljy)
+        
+        //车生活第四个按钮
+        let button04:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button04.frame = CGRect(x:(pWidth*3)+(pWidth-60)/2, y:245+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button04.setBackgroundImage(UIImage(named:"ico80-4"), for: .normal)
+        button04.tag = 103
+        button04.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button04)
+        
+        let aqdj:UILabel =  UILabel(frame:CGRect(x:(pWidth*3)+(pWidth-60)/2, y:280+viewHeight, width:60, height:60))
+        aqdj.text = "安全代驾"
+        aqdj.textAlignment = .center
+        aqdj.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(aqdj)
+        
+        //车生活第五个按钮
+        let button05:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button05.frame = CGRect(x:(pWidth-60)/2, y:320+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button05.setBackgroundImage(UIImage(named:"ico80-5"), for: .normal)
+        button05.tag = 104
+        button05.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button05)
+        
+        let jncx:UILabel =  UILabel(frame:CGRect(x:(pWidth-60)/2, y:355+viewHeight, width:60, height:60))
+        jncx.text = "缴纳车险"
+        jncx.textAlignment = .center
+        jncx.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(jncx)
+        
+        //车生活第六个按钮
+        let button06:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button06.frame = CGRect(x:pWidth+(pWidth-60)/2, y:320+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button06.setBackgroundImage(UIImage(named:"ico80-6"), for: .normal)
+        button06.tag = 105
+        button06.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button06)
+        
+        let esc:UILabel =  UILabel(frame:CGRect(x:pWidth+(pWidth-60)/2, y:355+viewHeight, width:60, height:60))
+        esc.text = "二手车"
+        esc.textAlignment = .center
+        esc.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(esc)
+        
+        //车生活第七个按钮
+        let button07:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button07.frame = CGRect(x:(pWidth*2)+(pWidth-60)/2, y:320+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button07.setBackgroundImage(UIImage(named:"ico80-7"), for: .normal)
+        button07.tag = 106
+        button07.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button07)
+        
+        let by:UILabel =  UILabel(frame:CGRect(x:(pWidth*2)+(pWidth-60)/2, y:355+viewHeight, width:60, height:60))
+        by.text = "4S保养"
+        by.textAlignment = .center
+        by.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(by)
+        
+        //车生活第八个按钮
+        let button08:UIButton = UIButton(type:.system)
+        //设置按钮位置和大小
+        button08.frame = CGRect(x:(pWidth*3)+(pWidth-60)/2, y:320+viewHeight, width:60, height:60)
+        //设置按钮文字
+        button08.setBackgroundImage(UIImage(named:"ico80-8"), for: .normal)
+        button08.tag = 107
+        button08.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+        scrollView.addSubview(button08)
+        
+        let clbj:UILabel =  UILabel(frame:CGRect(x:(pWidth*3)+(pWidth-60)/2, y:355+viewHeight, width:60, height:60))
+        clbj.text = "车辆报价"
+        clbj.textAlignment = .center
+        clbj.font =  UIFont.systemFont(ofSize: 14)
+        scrollView.addSubview(clbj)
+        
+ 
+       
         //        大横线，天津停车 只能停车平台
-        let label16:UILabel =  UILabel(frame:CGRect(x:0, y:398+viewHeight, width:self.view.frame.width, height:20))
+        let label16:UILabel =  UILabel(frame:CGRect(x:0, y:405+viewHeight, width:self.view.frame.width, height:20))
         label16.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 255)
         label16.textAlignment = .center
         label16.text = "天津停车  智能的停车平台"
@@ -257,9 +343,31 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
             self.tabBarController?.tabBar.isHidden = true
             self.tabBarController?.selectedIndex = 1
         }
-        else if btn.tag == 8{
-             self.performSegue(withIdentifier: "carLifeIdentifier", sender: self)
+       else if btn.tag == 100{
+           self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
         }
+        else if btn.tag == 101{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 102{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 103{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 104{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 105{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 106{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        else if btn.tag == 107{
+            self.performSegue(withIdentifier: "carLifeIdentifier", sender: btn.tag)
+        }
+        
         else{
             let alert=UIAlertController(title: "",message: "敬请期待!",preferredStyle: .alert )
             let ok = UIAlertAction(title: "好",style: .cancel,handler: nil )
@@ -301,6 +409,42 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
             controller.newsList = newsList
             controller.indexNews = sender as! Int
         }
+        else if segue.identifier == "carLifeIdentifier"{
+            let controller = segue.destination as! CarLifeUrlDisplay
+            
+            if sender  as! Int == 100{
+                controller.strUrl = "http://m.weizhang8.cn/"
+            }
+            else if sender  as! Int == 101{
+                controller.strUrl = "http://m.carbank.cn/sales/20170601_a/?invitecode=hz160940&channel=%e7%99%be%e5%ba%a6SEM%e7%a7%bb%e5%8a%a8g&launchArea=%e5%85%a8%e5%9c%b0%e5%9f%9f&promotionMethod=%e5%8f%8c%e5%90%91%e8%af%8d_%e6%b5%8b%e8%af%95&unit=%e6%b1%bd%e8%bd%a6%e9%87%91%e8%9e%8d_%e5%b9%b3%e5%8f%b0&keyword=%e6%b1%bd%e8%bd%a6%e9%87%91%e8%9e%8d%e5%85%ac%e5%8f%b8&teltype=4000656082"
+            }
+            else if sender as! Int  == 102{
+ 
+                controller.strUrl = "https://www.ipaosos.com/wshop/index.php#ca_source=Baidu"
+            }
+            else if sender as! Int == 103{
+                 controller.strUrl = "http://daijia.xiaojukeji.com/"
+            }
+            else if sender as! Int   == 104{
+               controller.strUrl = "http://u.pingan.com/upingan/insure/bdwx/bdwx.html?area=c03-bdwap-07&mediasource=C03-BDWAP-1-BQ-30723"
+            }
+            else if sender as! Int  == 105{
+                 controller.strUrl = "http://m.xin.com/tianjin/?channel=a16b46c1064d40488e159740f4&abtest=5_B"
+            }
+            else if sender as! Int  == 106{
+                controller.strUrl = "http://m.yixiuche.com/"
+            }
+            else if sender as! Int == 107{
+                controller.strUrl = "http://price.m.yiche.com/zuidijia/nb1765/?WT.mc_id=mbdyqk__sutengkuan4Sdian"
+ 
+            }
+ 
+        }
+        
+        
+        
+        
+        
     }
     //距离最近的停车场
     func getNearPark() -> Park{
@@ -326,6 +470,10 @@ class TestController: UIViewController,SliderGalleryControllerDelegate,BMKLocati
             //共享车位
         else  if btn.tag == 3{
             MapController.selectType = "type4"
+        }
+            //充电
+        else  if btn.tag == 4{
+            MapController.selectType = "type2"
         }
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.selectedIndex = 1

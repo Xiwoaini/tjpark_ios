@@ -131,9 +131,9 @@ class MapController: UIViewController,BMKMapViewDelegate{
         annotation1  = annotation as! ClusterAnnotation
         
         if annotation1.size > 1 {
-            let reSize1 = CGSize(width: 30, height: 30)
+            let reSize1 = CGSize(width: 40, height: 40)
             
-            newAnnotation.image = UIImage(named: "huiqipao")
+            newAnnotation.image = UIImage(named: "lanqipao")
             
             newAnnotation.image = newAnnotation.image?.reSizeImage(reSize:reSize1)
             return newAnnotation
@@ -271,7 +271,7 @@ class MapController: UIViewController,BMKMapViewDelegate{
             currentWidth = currentWidth + self.view.frame.width*0.2
             
         }
-         print(self.view.frame.width*0.15)
+   
         //充电停车场
         //第三行:价格
         if parkDetail.lable.contains("充电"){
